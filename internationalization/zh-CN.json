@@ -1,0 +1,11 @@
+{
+  "layouts": {
+    "menus": {
+      "Home": "首页",
+      "Dashboard": "报表",
+      "GaodeMap": "高德地图",
+      "TencentMap": "腾讯地图",
+      "MapLibreMap": "MapLibre Map"
+    }
+  }
+}

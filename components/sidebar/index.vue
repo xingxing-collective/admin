@@ -52,7 +52,7 @@ const props = defineProps({
 });
 
 const route = useRoute();
-
+const { t } = useI18n()
 const { ui, attrs } = useUI(
   'nuxt-admin.sidebar',
   toRef(props, 'ui'),
@@ -64,19 +64,22 @@ const { ui, attrs } = useUI(
 const links = [
   {
     id: 'home',
-    label: 'Home',
+    label:  t('layouts.menus.Home'),
     icon: 'i-heroicons-home',
     to: '/',
     tooltip: {
-      text: 'Home',
+      text: t('layouts.menus.Home'),
       shortcuts: ['G', 'H'],
     },
   },
   {
     id: 'dashboard',
-    label: 'Dashboard',
+    label: t('layouts.menus.Dashboard'),
     icon: 'i-heroicons-adjustments-horizontal',
     to: '/dashboard',
+    tooltip: {
+      text: t('layouts.menus.Dashboard'),
+    },
     defaultOpen: route.path.startsWith('/dashboard'),
     children: [{
       id: 'AntV',
@@ -100,24 +103,24 @@ const links = [
           defaultOpen: route.path.startsWith('/dashboard/antv/l7'),
           children: [
             {
-              label: 'GaodeMap',
+              label: t('layouts.menus.GaodeMap'),
               to: '/dashboard/antv/l7/gaodemap',
               tooltip: {
-                text: '高德',
+                text: t('layouts.menus.GaodeMap'),
               },
             },
             {
-              label: 'TencentMap',
+              label: t('layouts.menus.TencentMap'),
               to: '/dashboard/antv/l7/tencentmap',
               tooltip: {
-                text: '腾讯',
+                text: t('layouts.menus.TencentMap'),
               },
             },
             {
-              label: 'MapLibreMap',
+              label: t('layouts.menus.MapLibreMap'),
               to: '/dashboard/antv/l7/maplibremap',
               tooltip: {
-                text: 'MapLibre',
+                text: t('layouts.menus.MapLibreMap'),
               },
             },
           ],
@@ -141,9 +144,6 @@ const links = [
         text: 'AntV',
       },
     },],
-    tooltip: {
-      text: 'AntV',
-    },
   },
 
 ]
