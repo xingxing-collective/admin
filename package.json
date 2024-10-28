@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "A clean, elegant, beautiful and powerful admin template, based on Nuxt, TypeScript, Pinia,  and tailwindcss.",
   "type": "module",
-  "packageManager": "pnpm@9.4.0",
+  "packageManager": "pnpm@9.12.3",
   "scripts": {
     "dev": "nuxi dev",
     "build": "nuxi build",
@@ -37,9 +37,6 @@
     "@antv/x6-plugin-transform": "^2.1.8",
     "@biomejs/biome": "^1.9.4",
     "@ckpack/vue-color": "^1.6.0",
-    "@iconify-json/heroicons": "^1.2.1",
-    "@iconify-json/logos": "^1.2.3",
-    "@iconify-json/simple-icons": "^1.2.9",
     "@nuxt/ui": "^2.18.7",
     "@vueuse/core": "^11.1.0",
     "@vueuse/nuxt": "^11.1.0",
