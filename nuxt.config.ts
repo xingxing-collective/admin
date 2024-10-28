@@ -27,6 +27,7 @@ export default defineNuxtConfig({
     },
   },
   modules: ['@nuxt/ui', '@vueuse/nuxt', '@nuxt/icon'],
+  css: ['./assets/css/main.css'],
   runtimeConfig: {
     public: {
       map: {
