@@ -1,6 +1,6 @@
 <template>
   <div class="fixed inset-0 flex overflow-hidden">
-    <Sidebar />
+    <Aside />
     <div class="flex flex-1 w-full min-w-0">
       <div class="flex-col items-stretch relative w-full flex-1 flex">
         <Navbar>

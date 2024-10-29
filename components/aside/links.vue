@@ -51,7 +51,7 @@
           @leave="onLeave">
           <DisclosurePanel v-if="link.children?.length && (slotProps?.open || link.collapsible === false)" static
             as="template">
-            <SidebarLinks :level="level + 1" :links="link.children" :draggable="link.draggable" :ui="ui" />
+            <AsideLinks :level="level + 1" :links="link.children" :draggable="link.draggable" :ui="ui" />
           </DisclosurePanel>
         </Transition>
       </component>
@@ -66,7 +66,7 @@ import {
   DisclosurePanel,
   provideUseId,
 } from '@headlessui/vue';
-import type { SidebarLink } from '~/types/ui';
+import type { AsideLink } from '~/types/ui';
 import type { ChipColor, Strategy } from '#ui/types'
 import { getULinkProps } from '#ui/utils';
 
@@ -84,7 +84,7 @@ const props = defineProps({
     default: 0
   },
   links: {
-    type: Array as PropType<SidebarLink[]>,
+    type: Array as PropType<AsideLink[]>,
     default: () => []
   }
 })
@@ -156,7 +156,7 @@ const config = computed(() => ({
 }));
 
 const { ui, attrs } = useUI(
-  'nuxt-admin.sidebar.links',
+  'nuxt-admin.aside.links',
   toRef(props, 'ui'),
   config,
   toRef(props, 'class'),
