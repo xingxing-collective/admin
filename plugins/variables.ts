@@ -5,7 +5,7 @@ export default defineNuxtPlugin(() => {
   const root = computed(() => {
     return `:root {
               --header-height: ${appConfig.ui.variables.header.height};
-              --sidebar-width: ${appConfig.ui.variables.sidebar.width};
+              --aside-width: ${appConfig.ui.variables.aside.width};
               
                 ${Object.entries(appConfig.ui.variables.light)
                   .map(([key, value]) => `--ui-${key}: ${value};`)

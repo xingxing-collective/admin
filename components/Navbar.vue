@@ -4,7 +4,7 @@
       <div :class="ui.left">
         <slot name="toggle">
           <UButton v-if="isHeaderDialogOpen !== undefined" :icon="appConfig.ui.icons.menu" v-bind="($ui?.button?.secondary as any)"
-            :aria-label="`${isHeaderDialogOpen ? 'Close' : 'Open'} sidebar`" class="lg:hidden" @click="isHeaderDialogOpen = !isHeaderDialogOpen" />
+            :aria-label="`${isHeaderDialogOpen ? 'Close' : 'Open'} aside`" class="lg:hidden" @click="isHeaderDialogOpen = !isHeaderDialogOpen" />
         </slot>
         <slot name="left">
           <h1 v-if="title || $slots.title" :class="ui.title">

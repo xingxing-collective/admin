@@ -14,7 +14,7 @@ export default defineAppConfig({
       header: {
         height: '4rem',
       },
-      sidebar: {
+      aside: {
         width: '15rem',
       },
     },
