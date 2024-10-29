@@ -26,7 +26,7 @@ export default defineNuxtConfig({
       cssMinify: 'esbuild',
     },
   },
-  modules: ['@nuxt/ui', '@vueuse/nuxt', '@nuxt/icon'],
+  modules: ['@nuxt/ui', '@vueuse/nuxt', '@nuxt/icon', '@nuxtjs/i18n'],
   css: ['./assets/css/main.css'],
   runtimeConfig: {
     public: {
@@ -64,6 +64,28 @@ export default defineNuxtConfig({
         },
       },
     },
+  },
+  i18n: {
+    detectBrowserLanguage: {
+      useCookie: true,
+      fallbackLocale: 'en',
+    },
+    strategy: 'no_prefix',
+    locales: [
+      {
+        code: 'en',
+        name: 'English',
+        file: 'en.json',
+      },
+      {
+        code: 'zh-CN',
+        name: '简体中文',
+        file: 'zh-CN.json',
+      },
+    ],
+    defaultLocale: 'en',
+    lazy: true,
+    langDir: 'internationalization',
   },
   icon: {
     customCollections: [

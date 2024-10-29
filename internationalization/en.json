@@ -1,0 +1,11 @@
+{
+  "layouts": {
+    "menus": {
+      "Home": "Home",
+      "Dashboard": "Dashboard",
+      "GaodeMap": "Gaode Map",
+      "TencentMap": "Tencent Map",
+      "MapLibreMap": "MapLibre Map"
+    }
+  }
+}
