@@ -64,28 +64,35 @@ const { ui, attrs } = useUI(
 const links = [
   {
     id: 'home',
-    label:  t('layouts.menus.Home'),
+    label: t('layouts.menus.home'),
     icon: 'i-heroicons-home',
     to: '/',
     tooltip: {
-      text: t('layouts.menus.Home'),
+      text: t('layouts.menus.home'),
       shortcuts: ['G', 'H'],
     },
   },
   {
     id: 'dashboard',
-    label: t('layouts.menus.Dashboard'),
+    label: t('layouts.menus.dashboard'),
     icon: 'i-heroicons-adjustments-horizontal',
-    to: '/dashboard',
     tooltip: {
-      text: t('layouts.menus.Dashboard'),
+      text: t('layouts.menus.dashboard'),
     },
     defaultOpen: route.path.startsWith('/dashboard'),
     children: [{
-      id: 'AntV',
+      id: 'dashboard/overview',
+      label: t('layouts.menus.overview'),
+      icon: 'i-material-symbols-light:overview-outline',
+      to: '/dashboard',
+    }, {
+      id: 'antv',
       label: 'AntV',
       icon: 'antv-icon:group',
       defaultOpen: route.path.startsWith('/dashboard/antv'),
+      tooltip: {
+        text: 'AntV',
+      },
       children: [
         {
           label: 'G2',
@@ -103,24 +110,24 @@ const links = [
           defaultOpen: route.path.startsWith('/dashboard/antv/l7'),
           children: [
             {
-              label: t('layouts.menus.GaodeMap'),
+              label: t('layouts.menus.gaodeMap'),
               to: '/dashboard/antv/l7/gaodemap',
               tooltip: {
-                text: t('layouts.menus.GaodeMap'),
+                text: t('layouts.menus.gaodeMap'),
               },
             },
             {
-              label: t('layouts.menus.TencentMap'),
+              label: t('layouts.menus.tencentMap'),
               to: '/dashboard/antv/l7/tencentmap',
               tooltip: {
-                text: t('layouts.menus.TencentMap'),
+                text: t('layouts.menus.tencentMap'),
               },
             },
             {
-              label: t('layouts.menus.MapLibreMap'),
+              label: t('layouts.menus.mapLibreMap'),
               to: '/dashboard/antv/l7/maplibremap',
               tooltip: {
-                text: t('layouts.menus.MapLibreMap'),
+                text: t('layouts.menus.mapLibreMap'),
               },
             },
           ],
@@ -140,9 +147,6 @@ const links = [
           ],
         },
       ],
-      tooltip: {
-        text: 'AntV',
-      },
     },],
   },
 
