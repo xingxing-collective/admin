@@ -1,25 +1,39 @@
 <template>
   <div class="px-4 py-4">
-    <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8">
-      <div v-for="preview in previews" :key="preview.url"
-        class="col-span-1 rounded-xl divide-y divide-gray-200 dark:divide-gray-800 ring-1 ring-gray-200 dark:ring-gray-800 shadow bg-white dark:bg-gray-900 relative group flex flex-col overflow-hidden group hover:ring-2 hover:ring-primary-500 dark:hover:ring-primary-400 hover:bg-gray-100/50 dark:hover:bg-gray-900/50">
-        <div class="flex-1 px-4 py-5 sm:p-3">
-          <NuxtLink :to="preview.url" target="_self">
-            <img :src="preview.image.src" :alt="preview.image.alt" loading="lazy" class="w-full  object-fill" />
-          </NuxtLink>
+    <UTabs :items="tabs" class="w-full">
+      <template #default="{ item, selected }">
+        <span class="truncate" :class="[selected && 'text-primary-500 dark:text-primary-400']">{{
+          item.label }}</span>
+      </template>
+      <template #item="{ item }">
+        <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8">
+          <div v-for="preview in item.data" :key="preview.url"
+            class="col-span-1 rounded-xl divide-y divide-gray-200 dark:divide-gray-800 ring-1 ring-gray-200 dark:ring-gray-800 shadow bg-white dark:bg-gray-900 relative group flex flex-col overflow-hidden group hover:ring-2 hover:ring-primary-500 dark:hover:ring-primary-400 hover:bg-gray-100/50 dark:hover:bg-gray-900/50">
+            <div class="flex-1 px-4 py-5 sm:p-3">
+              <NuxtLink :to="preview.url" target="_self">
+                <img :src="preview.image.src" :alt="preview.image.alt" loading="lazy" class="w-full  object-fill" />
+              </NuxtLink>
+            </div>
+            <div class="bg-gray-100/50 dark:bg-gray-800/50 px-2 py-2 sm:px-6">
+              <div class=" text-center">{{ preview.title }}</div>
+            </div>
+          </div>
         </div>
-        <div class="bg-gray-100/50 dark:bg-gray-800/50 px-2 py-2 sm:px-6">
-          <div class=" text-center">{{ preview.title }}</div>
-        </div>
-      </div>
-    </div>
+      </template>
+      <template #icon="{ item,selected }">
+        <UIcon :name="item.icon" class="w-6 h-6 flex-shrink-0 me-2"  :class="[selected && 'text-primary-500 dark:text-primary-400']" />
+      </template>
+    </UTabs>
   </div>
 </template>
 <script setup lang="ts">
-const previews = computed(() => {
-  const colorMode = useColorMode();
-  if (colorMode.value === 'dark' || colorMode.value === 'light')
-    return [
+const colorMode = useColorMode();
+
+const tabs = computed(() => {
+  return [{
+    label: 'AntV',
+    icon: 'antv-icon:group',
+    data: [
       {
         title: 'AntV G2',
         image: {
@@ -68,9 +82,9 @@ const previews = computed(() => {
         },
         url: '/dashboard/antv/x6/flowchart',
       },
-    ];
-  return []
-});
+    ]
+  }]
+})
 useSeoMeta({
   title: 'Dashboard Index',
   description: 'Dashboard Index',

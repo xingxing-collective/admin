@@ -2,10 +2,7 @@
   <header :class="ui.wrapper" v-bind="attrs">
     <UContainer :class="ui.container">
       <div :class="ui.right">
-        <UDropdown mode="hover" :popper="{ strategy: 'absolute' }" :ui="{ width: 'w-24' }"
-          :items="locales.map(x => ([{ label: x.name!, click: () => handleSetLocale(x.code) }]))">
-          <UButton v-bind="{ ...$ui.button.secondary }" icon="heroicons:language-20-solid" />
-        </UDropdown>
+        <LanguageSwitch />
         <ColorPicker />
         <ColorModeButton />
         <UButton to="https://github.com/xingxing-collective/nuxt-admin" v-bind="{ ...$ui.button.secondary }"
@@ -13,19 +10,12 @@
       </div>
     </UContainer>
     <USlideover v-model="isHeaderDialogOpen" side="left" :class="ui.slideover.wrapper">
-      <Aside :ui="{ wrapper: ui.slideover.container }" />
+      <Aside :ui="{ wrapper: '' }" />
     </USlideover>
   </header>
 </template>
 <script setup lang="ts">
 const appConfig = useAppConfig();
-
-const { locales, setLocale } = useI18n()
-
-const handleSetLocale =(locale: string)=>{
-  setLocale(locale)
-  window.location.reload();
-}
 
 const config = computed(() => ({
   wrapper:
