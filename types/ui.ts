@@ -63,7 +63,7 @@ export interface Link extends ULink {
   click?: () => void;
 }
 
-export interface SidebarLink extends Link {
+export interface AsideLink extends Link {
   labelClass?: string;
   icon?: string;
   iconClass?: string;
@@ -77,5 +77,5 @@ export interface SidebarLink extends Link {
   // Only applicable to links with children
   draggable?: boolean;
   collapsible?: boolean;
-  children?: SidebarLink[];
+  children?: AsideLink[];
 }
