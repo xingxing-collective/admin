@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="text-center text-sm font-semibold">
-      韦恩图
+      {{$t('Venn Chart')}}
     </div>
     <div
       ref="container"

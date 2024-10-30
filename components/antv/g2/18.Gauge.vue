@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="text-center text-sm font-semibold">
-      仪表盘
+      {{$t('Gauge Chart')}}
     </div>
     <div
       ref="container"

@@ -1,7 +1,7 @@
 <template>
   <div class="w-full">
     <div class="text-center text-sm font-semibold">
-      明细表模式
+      {{$t('Table mode')}}
     </div>
     <div ref="container" />
   </div>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="text-center text-sm font-semibold">
-      和密度图
+      {{$t('Density with KDE')}}
     </div>
     <div
       ref="container"

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="text-center text-sm font-semibold">
-      竖直平行坐标系
+      {{$t('Vertical Parallel')}}
     </div>
     <div
       ref="container"

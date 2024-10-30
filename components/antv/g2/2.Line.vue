@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="text-center text-sm font-semibold">
-      基础折线图
+      {{$t('Line Chart')}}
     </div>
     <div
       ref="container"

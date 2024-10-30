@@ -5,10 +5,12 @@
   </UDropdown>
 </template>
 <script setup lang="ts">
-const { locales, setLocale } = useI18n()
+const { locale, locales, setLocale } = useI18n()
 
-const handleSetLocale = (locale: string) => {
-  setLocale(locale)
-  window.location.reload();
+const handleSetLocale = (code: string) => {
+  if (locale.value !== code) {
+    setLocale(code)
+    window.location.reload();
+  }
 }
 </script>

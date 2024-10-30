@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="text-center text-sm font-semibold">
-      雷达图
+      {{$t('Radar')}}
     </div>
     <div
       ref="container"

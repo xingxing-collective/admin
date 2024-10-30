@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="text-center text-sm font-semibold">
-      风向量场
+      {{$t('Wind Vector')}}
     </div>
     <div
       ref="container"

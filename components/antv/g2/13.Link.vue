@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="text-center text-sm font-semibold">
-      箭线
+      {{$t('Link Chart')}}
     </div>
     <div
       ref="container"

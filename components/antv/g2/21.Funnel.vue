@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="text-center text-sm font-semibold">
-      漏斗图
+      {{$t('Funnel')}}
     </div>
     <div
       ref="container"

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="text-center text-sm font-semibold">
-      预处理箱线图
+      {{$t('Boxplot')}}
     </div>
     <div
       ref="container"

@@ -1,7 +1,7 @@
 <template>
   <div class="w-full">
     <div class="text-center text-sm font-semibold">
-      平铺模式
+      {{$t('Grid mode')}}
     </div>
     <div ref="container" />
   </div>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="text-center text-sm font-semibold">
-      玫瑰图
+      {{$t('Rose Chart')}}
     </div>
     <div
       ref="container"
