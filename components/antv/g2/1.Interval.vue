@@ -36,7 +36,8 @@ const data = [
   { letter: 'Y', frequency: 0.01974 },
   { letter: 'Z', frequency: 0.00074 },
 ];
-const { container } = useChartRender((chart) => {
+const { container } = useChart('antv',{},(chart) => {
   chart.interval().data(data).encode('x', 'letter').encode('y', 'frequency');
 });
+
 </script>

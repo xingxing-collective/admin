@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-const { container } = useChartRender((chart) => {
+const { container } = useChart('antv',{},(chart) => {
   chart.liquid().data(0.3).style({
     outlineBorder: 4,
     outlineDistance: 8,
