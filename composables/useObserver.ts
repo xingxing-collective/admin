@@ -1,14 +1,19 @@
+import defu from 'defu';
+
 export const useObserver = () => {
   const observer = ref<IntersectionObserver>();
   const resizeObserver = ref<ResizeObserver>();
 
   function createObserver(
     container: Element,
-    callback: IdleRequestCallback,
-    options?: IntersectionObserverInit
+    callback: FrameRequestCallback,
+    _opts?: IntersectionObserverInit
   ) {
+    const options = defu(_opts, {
+      threshold: 0.75,
+    });
     observer.value = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) requestIdleCallback(callback);
+      if (entry.isIntersecting) requestAnimationFrame(callback);
     }, options);
     observer.value.observe(container);
   }

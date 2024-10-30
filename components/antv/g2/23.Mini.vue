@@ -35,7 +35,7 @@
 </template>
 
 <script setup lang="ts">
-const { container: line } = useChartRender((chart) => {
+const { container: line } = useChart('antv',{},(chart) => {
   const data = [
     264, 417, 438, 887, 309, 397, 550, 575, 563, 430, 525, 592, 492, 467, 513,
     546, 983, 340, 539, 243, 226, 192,
@@ -65,7 +65,7 @@ const { container: line } = useChartRender((chart) => {
       items[0].value,
   });
 });
-const { container: area } = useChartRender((chart) => {
+const { container: area } = useChart('antv',{},(chart) => {
   const data = [
     264, 417, 438, 887, 309, 397, 550, 575, 563, 430, 525, 592, 492, 467, 513,
     546, 983, 340, 539, 243, 226, 192,
@@ -91,7 +91,7 @@ const { container: area } = useChartRender((chart) => {
       items[0].value,
   });
 });
-const { container: column } = useChartRender((chart) => {
+const { container: column } = useChart('antv',{},(chart) => {
   const data = [
     264, 417, 438, 887, 309, 397, 550, 575, 563, 430, 525, 592, 492, 467, 513,
     546, 983, 340, 539, 243, 226, 192,
@@ -122,7 +122,7 @@ const { container: column } = useChartRender((chart) => {
       items[0].value,
   });
 });
-const { container: pie } = useChartRender((chart) => {
+const { container: pie } = useChart('antv',{},(chart) => {
   chart.coordinate({ type: 'theta' });
 
   chart
@@ -149,7 +149,7 @@ const { container: pie } = useChartRender((chart) => {
       items[0].value,
   });
 });
-const { container: progress } = useChartRender((chart) => {
+const { container: progress } = useChart('antv',{},(chart) => {
   const progress = 0.7;
   chart.coordinate({
     transform: [{ type: 'transpose' }],
@@ -176,7 +176,7 @@ const { container: progress } = useChartRender((chart) => {
 
   chart.interaction('tooltip', false);
 });
-const { container: ring } = useChartRender((chart) => {
+const { container: ring } = useChart('antv',{},(chart) => {
   const progress = 0.7;
 
   chart.coordinate({ type: 'theta', innerRadius: 0.7 });

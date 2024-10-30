@@ -19,7 +19,7 @@ const data = [
     target: 85,
   },
 ];
-const { container } = useChartRender((chart) => {
+const { container } = useChart('antv',{},(chart) => {
   chart.coordinate({ transform: [{ type: 'transpose' }] });
 
   chart.data(data);

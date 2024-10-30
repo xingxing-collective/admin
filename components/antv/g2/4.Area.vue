@@ -22,7 +22,7 @@ const data = [
   { year: '1998', value: 32040 },
   { year: '1999', value: 33233 },
 ];
-const { container } = useChartRender((chart) => {
+const { container } = useChart('antv',{},(chart) => {
   chart.data(data);
   chart
     .area()

@@ -43,7 +43,7 @@ const data = [
     url: 'https://gw.alipayobjects.com/zos/rmsportal/NjApYXminrnhBgOXyuaK.png',
   },
 ];
-const { container } = useChartRender((chart) => {
+const { container } = useChart('antv',{},(chart) => {
   chart.data(data);
 
   chart

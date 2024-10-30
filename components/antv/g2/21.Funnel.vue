@@ -18,7 +18,7 @@ const data = [
   { action: '支付订单', pv: 15000 },
   { action: '完成交易', pv: 8000 },
 ];
-const { container } = useChartRender((chart) => {
+const { container } = useChart('antv',{},(chart) => {
   chart.coordinate({
     transform: [{ type: 'transpose' }],
   });

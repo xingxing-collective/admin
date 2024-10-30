@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  ssr: false,
   app: {
     head: {
       title: 'Nuxt Admin',
@@ -26,7 +27,7 @@ export default defineNuxtConfig({
       cssMinify: 'esbuild',
     },
   },
-  modules: ['@nuxt/ui', '@vueuse/nuxt', '@nuxt/icon', '@nuxtjs/i18n'],
+  modules: ['@nuxt/ui', '@vueuse/nuxt', '@nuxtjs/i18n'],
   css: ['./assets/css/main.css'],
   runtimeConfig: {
     public: {
@@ -95,6 +96,5 @@ export default defineNuxtConfig({
       },
     ],
   },
-
   compatibilityDate: '2024-10-24',
 });

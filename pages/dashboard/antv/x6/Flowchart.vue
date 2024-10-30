@@ -566,9 +566,7 @@ useSeoMeta({
 }
 
 /* dark background */
-.dark .x6-widget-stencil-title::before {
-  
-}
+.dark .x6-widget-stencil-title::before {}
 
 .x6-widget-stencil-group-title {
   background-color: inherit !important;

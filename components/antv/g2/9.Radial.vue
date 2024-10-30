@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-const { container } = useChartRender((chart) => {
+const { container } = useChart('antv',{},(chart) => {
   chart.coordinate({ type: 'radial', innerRadius: 0.1, endAngle: Math.PI });
 
   chart

@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-const { container } = useChartRender((chart) => {
+const { container } = useChart('antv',{},(chart) => {
   chart.data({
     type: 'fetch',
     value: 'https://assets.antv.antgroup.com/g2/species.json',
