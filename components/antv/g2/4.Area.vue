@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="text-center text-sm font-semibold">
-      简单面积图
+      {{$t('Basic Area Chart')}}
     </div>
     <div
       ref="container"

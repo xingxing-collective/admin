@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="text-center text-sm font-semibold">
-      华夫饼图
+      {{$t('Waffle')}}
     </div>
     <div
       ref="container"

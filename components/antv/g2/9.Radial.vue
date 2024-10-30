@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="text-center text-sm font-semibold">
-      玉珏图
+      {{$t('Radial Bar Chart')}}
     </div>
     <div
       ref="container"

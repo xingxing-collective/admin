@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="text-center text-sm font-semibold">
-      股票图
+      {{$t('Candlestick Chart')}}
     </div>
     <div
       ref="container"

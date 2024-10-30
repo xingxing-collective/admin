@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="text-center text-sm font-semibold">
-      文本段落
+      {{$t('Paragraph')}}
     </div>
     <div
       ref="container"

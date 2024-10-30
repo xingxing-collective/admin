@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="text-center text-sm font-semibold">
-      旭日图
+      {{$t('Sunburst Chart')}}
     </div>
     <div ref="container" class="h-full" />
   </div>

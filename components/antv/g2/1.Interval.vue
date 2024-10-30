@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="text-center text-sm font-semibold">
-      简单柱形图
+      {{$t('Simple Column')}}
     </div>
     <div ref="container" class="h-full" />
   </div>

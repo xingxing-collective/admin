@@ -20,7 +20,7 @@ export function useSheet(
   sheetType: SheetType,
   dom: S2MountContainer,
   dataCfg: S2DataConfig,
-  options: S2Options<TooltipContentType, Pagination, string | Element, string>
+  options: S2Options
 ) {
   switch (sheetType) {
     case 'pivot': {
@@ -52,8 +52,7 @@ export function useSheet(
 export function useSheetRender(sheetType: SheetType = 'pivot') {
   const container = ref<HTMLElement>();
   const dataCfg = ref<S2DataConfig>();
-  const options =
-    ref<S2Options<TooltipContentType, Pagination, string | Element, string>>();
+  const options = ref<S2Options>();
   const s2 = shallowRef<PivotSheet | TableSheet>();
   const hasRendered = ref(false);
   const colors = ref<ColorInput>();

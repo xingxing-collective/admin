@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="text-center text-sm font-semibold">
-      浏览器图标
+      {{$t('Browser Logo')}}
     </div>
     <div
       ref="container"

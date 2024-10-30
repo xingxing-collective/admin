@@ -64,25 +64,25 @@ const { ui, attrs } = useUI(
 const links = [
   {
     id: 'home',
-    label: t('layouts.menus.home'),
+    label: t('Home'),
     icon: 'i-heroicons-home',
     to: '/',
     tooltip: {
-      text: t('layouts.menus.home'),
+      text: t('Home'),
       shortcuts: ['G', 'H'],
     },
   },
   {
     id: 'dashboard',
-    label: t('layouts.menus.dashboard'),
+    label: t('Dashboard'),
     icon: 'i-heroicons-adjustments-horizontal',
     tooltip: {
-      text: t('layouts.menus.dashboard'),
+      text: t('Dashboard'),
     },
     defaultOpen: route.path.startsWith('/dashboard'),
     children: [{
       id: 'dashboard/overview',
-      label: t('layouts.menus.overview'),
+      label: t('Overview'),
       icon: 'i-material-symbols-light:overview-outline',
       to: '/dashboard',
     }, {
@@ -110,24 +110,24 @@ const links = [
           defaultOpen: route.path.startsWith('/dashboard/antv/l7'),
           children: [
             {
-              label: t('layouts.menus.gaodeMap'),
+              label: t('Gaode Map'),
               to: '/dashboard/antv/l7/gaodemap',
               tooltip: {
-                text: t('layouts.menus.gaodeMap'),
+                text: t('Gaode Map'),
               },
             },
             {
-              label: t('layouts.menus.tencentMap'),
+              label: t('Tencent Map'),
               to: '/dashboard/antv/l7/tencentmap',
               tooltip: {
-                text: t('layouts.menus.tencentMap'),
+                text: t('Tencent Map'),
               },
             },
             {
-              label: t('layouts.menus.mapLibreMap'),
+              label: t('MapLibre'),
               to: '/dashboard/antv/l7/maplibremap',
               tooltip: {
-                text: t('layouts.menus.mapLibreMap'),
+                text: t('MapLibre'),
               },
             },
           ],
@@ -138,10 +138,10 @@ const links = [
           defaultOpen: route.path.startsWith('/dashboard/antv/x6'),
           children: [
             {
-              label: 'Flowchart',
+              label: t('Flowchart'),
               to: '/dashboard/antv/x6/flowchart',
               tooltip: {
-                text: '流程图',
+                text: t('Flowchart'),
               },
             },
           ],

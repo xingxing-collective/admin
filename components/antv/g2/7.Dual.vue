@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="text-center text-sm font-semibold">
-      柱线混合
+      {{$t('Line Bar Chart')}}
     </div>
     <div
       ref="container"

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="text-center text-sm font-semibold">
-      简单饼图
+      {{$t('Simple pie chart')}}
     </div>
     <div
       ref="container"

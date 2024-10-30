@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="text-center text-sm font-semibold">
-      子弹图
+      {{$t('Bullet')}}
     </div>
     <div
       ref="container"

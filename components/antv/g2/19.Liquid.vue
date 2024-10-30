@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="text-center text-sm font-semibold">
-      水波图
+      {{$t('Liquid Chart')}}
     </div>
     <div
       ref="container"

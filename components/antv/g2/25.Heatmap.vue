@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="text-center text-sm font-semibold">
-      密度热力图
+      {{$t('Heatmap')}}
     </div>
     <div
       ref="container"

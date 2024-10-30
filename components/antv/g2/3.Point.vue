@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="text-center text-sm font-semibold">
-      散点图
+      {{$t('Scatterplot')}}
     </div>
     <div
       ref="container"
