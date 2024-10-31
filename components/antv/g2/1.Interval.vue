@@ -1,13 +1,15 @@
 <template>
   <div>
     <div class="text-center text-sm font-semibold">
-      {{$t('Simple Column')}}
+      {{ $t('Simple Column') }}
     </div>
     <div ref="container" class="h-full" />
   </div>
 </template>
 
 <script setup lang="ts">
+import type { Chart } from '@antv/g2';
+
 const data = [
   { letter: 'A', frequency: 0.08167 },
   { letter: 'B', frequency: 0.01492 },
@@ -36,8 +38,10 @@ const data = [
   { letter: 'Y', frequency: 0.01974 },
   { letter: 'Z', frequency: 0.00074 },
 ];
-const { container } = useChart('antv',{},(chart) => {
-  chart.interval().data(data).encode('x', 'letter').encode('y', 'frequency');
-});
+const { container } = useChart('antv', beforeRender);
 
+async function beforeRender(chart: Chart) {
+  chart.interval().data(data).encode('x', 'letter').encode('y', 'frequency');
+  await chart.render()
+}
 </script>

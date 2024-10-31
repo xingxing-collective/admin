@@ -83,6 +83,10 @@ const tabs = computed(() => {
         url: '/dashboard/antv/x6/flowchart',
       },
     ]
+  },{
+    label:'ECharts',
+    icon:'i-simple-icons:apacheecharts',
+    data:[]
   }]
 })
 useSeoMeta({

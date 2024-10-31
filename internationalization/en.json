@@ -35,5 +35,16 @@
   "Grid mode": "Grid mode",
   "Tree mode": "Tree mode",
   "Table mode": "Table mode",
-  "Generate palette": "Generate palette"
+  "Generate palette": "Generate palette",
+  "Basic flowchart": "Basic flowchart",
+  "System Design Diagram": "System Design Diagram",
+  "Basic Line Chart": "Basic Line Chart",
+  "Basic Bar": "Basic Bar",
+  "Referer of a Website": "Referer of a Website",
+  "Doughnut Chart": "Doughnut Chart",
+  "Customized Pie": "Customized Pie",
+  "Basic Scatter Chart": "Basic Scatter Chart",
+  "Exponential Regression": "Exponential Regression",
+  "GEO Beef Cuts": "GEO Beef Cuts",
+  "Basic Candlestick": "Basic Candlestick"
 }

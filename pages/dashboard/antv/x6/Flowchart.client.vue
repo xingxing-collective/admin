@@ -1,5 +1,5 @@
 <template>
-  <div class="grid grid-cols-1 w-full h-full">
+  <div class="grid grid-cols-1 w-full h-[calc(100vh-var(--header-height))]">
     <div ref="container" class=" w-full h-full flex border border-gray-200">
       <div ref="stencilContainer" class="w-48 h-full relative border-r border-gray-200" />
       <div ref="graphContainer" class=" w-[calc(100%-12rem)] h-full" />
@@ -17,6 +17,7 @@ import { Snapline } from '@antv/x6-plugin-snapline';
 import { Stencil } from '@antv/x6-plugin-stencil';
 import { Transform } from '@antv/x6-plugin-transform';
 
+const { t } = useI18n()
 const container = ref<HTMLElement>();
 const stencilContainer = ref<HTMLDivElement>();
 const graphContainer = ref<HTMLDivElement>();
@@ -171,18 +172,18 @@ const createGraph = () => {
  */
 const createStencil = (graph: Graph) => {
   return new Stencil({
-    title: '流程图',
+    title: t('Flowchart'),
     target: graph,
     stencilGraphWidth: 200,
     stencilGraphHeight: 180,
     collapsable: true,
     groups: [
       {
-        title: '基础流程图',
+        title: t('Basic flowchart'),
         name: 'group1',
       },
       {
-        title: '系统设计图',
+        title: t('System Design Diagram'),
         name: 'group2',
         graphHeight: 250,
         layoutOptions: {
@@ -544,6 +545,7 @@ const createNode = (graph: Graph, stencil: Stencil) => {
 
 onMounted(() => {
   graph.value = createGraph();
+  console.log(graph.value)
   usePlugins(graph.value!);
   stencil.value = createStencil(graph.value!);
   stencilContainer.value!.appendChild(stencil.value!.container);
