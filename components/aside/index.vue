@@ -16,8 +16,7 @@
     <div :class="ui.aside.wrapper">
       <div :class="ui.aside.container">
         <div :class="ui.aside.body">
-          <AsideLinks :links="links">
-          </AsideLinks>
+          <AsideLinks :links="links" />
           <UDivider />
           <div class="flex-1" />
         </div>
@@ -86,7 +85,7 @@ const links = [
       icon: 'i-material-symbols-light:overview-outline',
       to: '/dashboard',
     }, {
-      id: 'antv',
+      id: 'dashboard/antv',
       label: 'AntV',
       icon: 'antv-icon:group',
       defaultOpen: route.path.startsWith('/dashboard/antv'),
@@ -147,8 +146,17 @@ const links = [
           ],
         },
       ],
-    },],
-  },
-
+    },
+    {
+      id: 'dashboard/echarts',
+      label: 'ECharts',
+      to: '/dashboard/echarts',
+      icon: 'i-simple-icons:apacheecharts',
+      iconClass:'text-primary-400 group-hover:text-primary-400 dark:text-primary-400 dark:group-hover:text-primary-400',
+      tooltip: {
+        text: 'ECharts',
+      },
+    }]
+  }
 ]
 </script>

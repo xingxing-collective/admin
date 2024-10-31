@@ -1,9 +1,25 @@
 import { Chart } from '@antv/g2';
 import { defu } from 'defu';
-import { type ECharts, type EChartsOption, init } from 'echarts';
+import {
+  type ECharts,
+  type EChartsOption,
+  init,
+  registerMap,
+  type registerTransform,
+} from 'echarts';
 import type { ShallowRef } from 'vue';
 
 type RuntimeOptions = ConstructorParameters<typeof Chart>[0];
+
+type EChartsTransformPlugin = Parameters<typeof registerTransform>[0];
+
+type EChartsMapPlugin = {
+  mapName: Parameters<typeof registerMap>[0];
+  geoJson: Parameters<typeof registerMap>[1];
+  specialAreas?: Parameters<typeof registerMap>[2];
+};
+
+type Plugin = EChartsMapPlugin | EChartsTransformPlugin;
 
 type ChartType = 'echarts' | 'antv';
 type ChartInstance = Chart | ECharts;
@@ -13,65 +29,131 @@ type ChartOptions<T extends ChartType> = T extends 'antv'
 
 type ChartCallback<T extends ChartType> = (
   chart: T extends 'antv' ? Chart : ECharts
-) => void;
+) => Promise<void> | void;
 
 type ChartFn<T extends ChartType> = T extends 'antv'
   ? {
       container: Ref<HTMLElement | undefined>;
       chartInstance: ShallowRef<Chart | undefined, Chart | undefined>;
+      rendered: Ref<boolean, boolean>;
+      use: (this: ChartFn<T>, plugin: Plugin) => ChartFn<T>;
     }
   : {
       container: Ref<HTMLElement | undefined>;
       chartInstance: ShallowRef<ECharts | undefined, ECharts | undefined>;
+      rendered: Ref<boolean, boolean>;
+      use: (this: ChartFn<T>, plugin: Plugin) => ChartFn<T>;
     };
 
 export function useChart<T extends ChartType>(
   type: T,
+  hook?: ChartCallback<T>
+): ChartFn<T>;
+export function useChart<T extends ChartType>(
+  type: T,
   _opts?: ChartOptions<T>,
-  callback?: ChartCallback<T>
+  hook?: ChartCallback<T>
+): ChartFn<T>;
+export function useChart<T extends ChartType>(
+  type: T,
+  _opts?: ChartOptions<T> | ChartCallback<T>,
+  hook?: ChartCallback<T>
 ): ChartFn<T> {
   const container = ref<HTMLElement>();
   const colorMode = useColorMode();
   const chartInstance = shallowRef<ChartInstance>();
   const options = ref<ChartOptions<T>>();
   const rendered = ref(false);
-  const { createObserver } = useObserver();
+
+  const { createObserver, createResizeObserver } = useObserver();
 
   async function render() {
-    if (type === 'antv') {
-      options.value = defu(_opts, {
-        container: container.value!,
-        autoFit: true,
-        theme: colorMode.value,
-      });
-      if (!rendered.value) {
-        chartInstance.value = new Chart(options.value as RuntimeOptions);
-        // @ts-ignore
-        if (callback) callback(chartInstance.value);
-        await chartInstance.value.render();
+    switch (type) {
+      case 'antv': {
+        if (!rendered.value) {
+          if (typeof _opts === 'object') {
+            options.value = defu(_opts, {
+              container: container.value!,
+              autoFit: true,
+              theme: colorMode.value,
+            });
+            chartInstance.value = new Chart(options.value as RuntimeOptions);
+            // @ts-ignore
+            if (hook) hook(chartInstance.value);
+            await chartInstance.value.render();
+          }
+
+          if (typeof _opts === 'function') {
+            chartInstance.value = new Chart(
+              defu(
+                {},
+                {
+                  container: container.value!,
+                  autoFit: true,
+                  theme: colorMode.value,
+                }
+              )
+            );
+            // @ts-ignore
+            await Promise.resolve(_opts(chartInstance.value));
+            await chartInstance.value.render();
+          }
+          rendered.value = true;
+        }
+        break;
       }
-      rendered.value = true;
-    } else if (type === 'echarts') {
-      options.value = defu(_opts);
-      if (!rendered.value) {
-        chartInstance.value = init(container.value, colorMode.value);
-        // @ts-ignore
-        if (callback) callback(chartInstance.value);
-        rendered.value = true;
+      case 'echarts': {
+        if (!rendered.value) {
+          chartInstance.value = init(container.value, colorMode.value);
+          if (typeof _opts === 'object') {
+            options.value = defu(_opts);
+            chartInstance.value.setOption(options.value);
+            // @ts-ignore
+            if (hook) hook(chartInstance.value);
+          }
+          if (typeof _opts === 'function') {
+            // @ts-ignore
+            await Promise.resolve(_opts(chartInstance.value));
+          }
+          rendered.value = true;
+        }
+        break;
       }
-    } else {
-      throw new Error('Unsupported chart type');
+      default: {
+        throw new Error('Unsupported chart type');
+      }
     }
   }
 
+  function resize() {
+    if (type === 'echarts') {
+      (chartInstance.value as ECharts)?.resize();
+    }
+  }
+
+  function use(this: ChartFn<T>, plugin: Plugin) {
+    if (
+      typeof plugin === 'object' &&
+      Object.keys(plugin).some((x) =>
+        ['mapName', 'geoJson', 'specialAreas'].includes(x)
+      )
+    ) {
+      registerMap(
+        (plugin as EChartsMapPlugin).mapName,
+        (plugin as EChartsMapPlugin).geoJson,
+        (plugin as EChartsMapPlugin).specialAreas
+      );
+    }
+    return this;
+  }
+
   onMounted(() => {
-    createObserver(
-      container.value!,
-      async () => {
-        await render();
-      },
-      { threshold: 0.5 }
-    );
+    createObserver(container.value!, async () => {
+      await render();
+    });
+    createResizeObserver(container.value!, () => {
+      resize();
+    });
   });
 
   //TODO: Set chart Theme
@@ -80,5 +162,7 @@ export function useChart<T extends ChartType>(
   return {
     container,
     chartInstance,
+    rendered,
+    use,
   } as ChartFn<T>;
 }
