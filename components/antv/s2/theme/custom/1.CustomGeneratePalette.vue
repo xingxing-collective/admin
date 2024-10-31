@@ -2,7 +2,7 @@
   <div class="w-full">
     <div class="flex items-center justify-center gap-4">
       <div class="text-center text-sm font-semibold">
-        主题色自动生成色板
+        {{ $t('Generate palette') }}
       </div>
       <UPopover mode="hover" :popper="{ strategy: 'absolute' }">
         <template #default="{ open }">
