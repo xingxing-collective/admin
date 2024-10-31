@@ -1,13 +1,11 @@
 import type {
-  Pagination,
   S2DataConfig,
   S2MountContainer,
   S2Options,
   ThemeCfg,
-  TooltipContentType,
 } from '@antv/s2';
 import { PivotSheet, TableSheet, generatePalette, getPalette } from '@antv/s2';
-import type { ColorInput } from '@ctrl/tinycolor';
+import defu from 'defu';
 
 export type SheetType =
   | 'pivot'
@@ -16,137 +14,103 @@ export type SheetType =
   | 'strategy'
   | 'editable';
 
-export function useSheet(
-  sheetType: SheetType,
-  dom: S2MountContainer,
-  dataCfg: S2DataConfig,
-  options: S2Options
-) {
-  switch (sheetType) {
-    case 'pivot': {
-      return new PivotSheet(dom, dataCfg, options);
-    }
-    case 'table': {
-      options.height =
-        options.height || typeof dom === 'string'
-          ? Number(
-              document.querySelector(dom as string)?.parentElement?.clientHeight
-            ) -
-            Number(
-              document.querySelector(dom as string)?.previousElementSibling
-                ?.clientHeight
-            )
-          : Number(dom.parentElement?.clientHeight) -
-            Number(dom.previousElementSibling?.clientHeight);
-      return new TableSheet(dom, dataCfg, options);
-    }
-    default: {
-      throw new Error('sheet type is not supported');
-    }
-  }
-}
+export const sheetThemes = new Map<string, ThemeCfg>()
+  .set('dark', {
+    name: 'colorful',
+    palette: generatePalette({
+      ...getPalette('colorful'),
+      brandColor: '#111827',
+    }),
+  })
+  .set('light', {
+    name: 'default',
+  });
 
-/**
- * Render the Sheet table
- */
-export function useSheetRender(sheetType: SheetType = 'pivot') {
-  const container = ref<HTMLElement>();
+export type Color = string;
+export type SheetInstance = PivotSheet | TableSheet;
+
+export function useSheet(sheetType: SheetType) {
+  const container = ref<S2MountContainer>();
   const dataCfg = ref<S2DataConfig>();
-  const options = ref<S2Options>();
-  const s2 = shallowRef<PivotSheet | TableSheet>();
-  const hasRendered = ref(false);
-  const colors = ref<ColorInput>();
+  const options = ref<S2Options | null>(null);
+  const themeCfg = ref<ThemeCfg>();
+
+  if (typeof container.value === 'string') {
+    const dom = document.querySelector(container.value);
+    if (dom) container.value = dom;
+  }
+  options.value = defu(options.value, {
+    height:
+      Number((container.value as Element)?.parentElement?.clientHeight) -
+      Number(
+        (container.value as Element)?.previousElementSibling?.clientHeight
+      ),
+  });
+
   const colorMode = useColorMode();
+  const sheetInstance = shallowRef<SheetInstance>();
   const { createObserver, createResizeObserver } = useObserver();
 
-  async function renderSheet() {
-    if (hasRendered.value) return;
-    s2.value = useSheet(
-      sheetType,
-      container.value!,
-      dataCfg.value!,
-      options.value!
-    );
-    await s2.value.render();
-    if (colors.value) {
-      await setThemeCfg();
-    } else {
-      if (colorMode.value === 'dark') {
-        s2.value!.setThemeCfg({
-          name: 'colorful',
-          palette: generatePalette({
-            ...getPalette('colorful'),
-            brandColor: '#000000',
-          }),
-        });
-        await s2.value?.render(false);
-      } else {
-        s2.value!.setThemeCfg({ name: 'default' });
-        await s2.value?.render(false);
+  function createSheetInstance() {
+    if (!container.value) throw new Error('S2MountContainer is not available');
+    if (!dataCfg.value) throw new Error('S2DataConfig is not available');
+
+    switch (sheetType) {
+      case 'pivot': {
+        return new PivotSheet(container.value, dataCfg.value, options.value);
+      }
+      case 'table': {
+        return new TableSheet(container.value, dataCfg.value, options.value);
+      }
+      default: {
+        throw new Error('sheet type is not supported');
       }
     }
-    hasRendered.value = true;
+  }
+
+  async function render() {
+    if (!sheetInstance.value) sheetInstance.value = createSheetInstance();
+
+    sheetInstance.value?.setThemeCfg(themeCfg.value);
+    await sheetInstance.value?.render();
   }
 
   async function changeSheetSize(size: ResizeObserverSize) {
-    if (!s2.value) return;
-    s2.value!.changeSheetSize(size.inlineSize, size.blockSize);
-    await s2.value.render(false);
+    sheetInstance.value?.changeSheetSize(size.inlineSize, size.blockSize);
+    await sheetInstance.value?.render(false);
   }
 
-  async function setThemeCfg() {
-    const themeCfg = ref<ThemeCfg>();
-    const palette = getPalette('colorful');
-    const newPalette = generatePalette({
-      ...palette,
-      brandColor:
-        typeof colors.value === 'string'
-          ? colors.value
-          : (colors.value as any).hex,
+  async function setThemeCfg(color: string) {
+    const palette = generatePalette({
+      ...getPalette('colorful'),
+      brandColor: color,
     });
-    themeCfg.value = {
-      name: 'colorful',
-      palette: newPalette,
-    };
-    s2.value?.setThemeCfg(themeCfg.value);
-    await s2.value?.render(false);
+    const newTheme: ThemeCfg = { palette };
+    sheetInstance.value?.setThemeCfg(defu(themeCfg.value, newTheme));
+    await sheetInstance.value?.render(false);
   }
 
-  // custom theme
-  watch(colors, async () => {
-    await setThemeCfg();
-  });
-
-  // feat color mode changes
-  watch(colorMode, async (newVal) => {
-    if (!colors.value) {
-      if (newVal.value === 'dark') {
-        s2.value!.setThemeCfg({
-          name: 'colorful',
-          palette: generatePalette({
-            ...getPalette('colorful'),
-            brandColor: '#000000',
-          }),
-        });
-        await s2.value?.render(false);
-      } else {
-        s2.value!.setThemeCfg({ name: 'default' });
-        await s2.value?.render(false);
-      }
+  watch(
+    colorMode,
+    async () => {
+      themeCfg.value = sheetThemes.get(colorMode.value);
+      sheetInstance.value?.setThemeCfg(themeCfg.value);
+      await sheetInstance.value?.render(false);
+    },
+    {
+      immediate: true,
     }
-  });
+  );
 
   onMounted(() => {
     createObserver(
-      container.value!,
-      () => {
-        renderSheet();
+      container.value as Element,
+      async () => {
+        await render();
       },
-      {
-        threshold: [0, 0.25, 0.5, 0.75, 1],
-      }
+      { threshold: [0, 0.25, 0.5, 0.75, 1] }
     );
-    createResizeObserver(container.value!, async ([entry]) => {
+    createResizeObserver(container.value as Element, async ([entry]) => {
       const [size] = entry.borderBoxSize || [];
       await changeSheetSize(size);
     });
@@ -155,9 +119,7 @@ export function useSheetRender(sheetType: SheetType = 'pivot') {
   return {
     container,
     dataCfg,
-    colors,
     options,
-    s2,
-    rendered: readonly(hasRendered),
+    setThemeCfg,
   };
 }
