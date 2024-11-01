@@ -9,7 +9,10 @@
 <script setup lang="ts">
 import type { ECharts, EChartsOption } from 'echarts';
 
-const svg = await $fetch('/examples/Beef_cuts_France.svg', { responseType: 'text' })
+const { default: src } = await import('~/assets/examples/echarts/Beef_cuts_France.svg')
+const svg = await $fetch(src, {
+  responseType: 'text'
+})
 
 const { container } = useChart('echarts', rendered).use({ mapName: 'Beef_cuts_France', geoJson: { svg: svg as any } })
 
