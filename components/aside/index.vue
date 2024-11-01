@@ -152,7 +152,6 @@ const links = [
       label: 'ECharts',
       to: '/dashboard/echarts',
       icon: 'i-simple-icons:apacheecharts',
-      iconClass:'text-primary-400 group-hover:text-primary-400 dark:text-primary-400 dark:group-hover:text-primary-400',
       tooltip: {
         text: 'ECharts',
       },

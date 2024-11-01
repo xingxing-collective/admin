@@ -20,8 +20,9 @@
           </div>
         </div>
       </template>
-      <template #icon="{ item,selected }">
-        <UIcon :name="item.icon" class="w-6 h-6 flex-shrink-0 me-2"  :class="[selected && 'text-primary-500 dark:text-primary-400']" />
+      <template #icon="{ item, selected }">
+        <UIcon :name="item.icon" class="w-6 h-6 flex-shrink-0 me-2"
+          :class="[selected && 'text-primary-500 dark:text-primary-400']" />
       </template>
     </UTabs>
   </div>
@@ -83,10 +84,17 @@ const tabs = computed(() => {
         url: '/dashboard/antv/x6/flowchart',
       },
     ]
-  },{
-    label:'ECharts',
-    icon:'i-simple-icons:apacheecharts',
-    data:[]
+  }, {
+    label: 'ECharts',
+    icon: 'i-simple-icons:apacheecharts',
+    data: [{
+      title: 'ECharts',
+      image: {
+        src: `/images/echarts/${colorMode.value}/preview.png`,
+        alt: 'ECharts',
+      },
+      url: '/dashboard/echarts',
+    },]
   }]
 })
 useSeoMeta({
