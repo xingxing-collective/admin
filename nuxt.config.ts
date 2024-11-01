@@ -87,6 +87,10 @@ export default defineNuxtConfig({
     lazy: true,
     langDir: 'internationalization',
   },
+  colorMode: {
+    preference: 'light',
+    fallback: 'light',
+  },
   icon: {
     customCollections: [
       {

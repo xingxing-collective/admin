@@ -20,12 +20,7 @@ const componentModules = import.meta.glob<Component>(
 );
 const components = computed(() => {
   if (import.meta.client) {
-    return Object.entries(componentModules).sort((a, b) => {
-      return (
-        Number.parseInt(a[0].match(/\/(\d+)\./)![1], 10) -
-        Number.parseInt(b[0].match(/\/(\d+)\./)![1], 10)
-      );
-    });
+    return Object.entries(componentModules).sort((a, b) => Number.parseInt(a[0].split('.')[0]) - Number.parseInt(b[0].split('.')[0]));
   }
   return [];
 });
