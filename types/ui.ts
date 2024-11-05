@@ -64,6 +64,7 @@ export interface Link extends ULink {
 }
 
 export interface AsideLink extends Link {
+  id: string | number;
   labelClass?: string;
   icon?: string;
   iconClass?: string;

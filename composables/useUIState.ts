@@ -2,7 +2,12 @@ import { createSharedComposable } from '@vueuse/core';
 
 const _useUIState = () => {
   const isHeaderDialogOpen = ref(false);
+  const isSearchModalOpen = ref(false);
   const route = useRoute();
+
+  function toggleSearch() {
+    isSearchModalOpen.value = !isSearchModalOpen.value;
+  }
 
   watch(
     () => route.path,
@@ -13,6 +18,8 @@ const _useUIState = () => {
 
   return {
     isHeaderDialogOpen,
+    isSearchModalOpen,
+    toggleSearch,
   };
 };
 
