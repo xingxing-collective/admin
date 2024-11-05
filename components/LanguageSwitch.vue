@@ -1,8 +1,15 @@
 <template>
-  <UDropdown mode="hover" :popper="{ strategy: 'absolute' }" :ui="{ width: 'w-24' }"
-    :items="locales.map(x => ([{ label: x.name!, click: () => handleSetLocale(x.code) }]))">
+  <UPopover mode="hover" :popper="{ strategy: 'absolute' }" :ui="{ width: 'w-28' }">
     <UButton v-bind="{ ...$ui.button.secondary }" icon="heroicons:language-20-solid" />
-  </UDropdown>
+    <template #panel>
+      <div class="px-3 py-2 flex flex-col gap-1">
+        <template v-for="l in locales">
+          <ULink class="text-left text-sm hover:before:bg-gray-50 dark:hover:before:bg-gray-800/50"
+            @click="handleSetLocale(l.code)">{{ l.name }}</ULink>
+        </template>
+      </div>
+    </template>
+  </UPopover>
 </template>
 <script setup lang="ts">
 const { locale, locales, setLocale } = useI18n()

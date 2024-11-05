@@ -2,6 +2,7 @@
   <header :class="ui.wrapper" v-bind="attrs">
     <UContainer :class="ui.container">
       <div :class="ui.right">
+        <Search />
         <LanguageSwitch />
         <ColorPicker />
         <ColorModeButton />
@@ -19,7 +20,7 @@ const appConfig = useAppConfig();
 
 const config = computed(() => ({
   wrapper:
-    'bg-background/75 backdrop-blur border-b border-gray-200 dark:border-gray-800 -mb-px sticky top-0 z-50',
+    'bg-background/75  border-b border-gray-200 dark:border-gray-800 -mb-px sticky top-0 z-50',
   container: 'flex items-center justify-between gap-3 h-[--header-height]',
   right: 'flex items-center justify-end lg:flex-1 gap-1.5',
   slideover: {

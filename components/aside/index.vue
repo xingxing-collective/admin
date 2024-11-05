@@ -25,7 +25,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { links } from '~/constants/links'
+const { links } = useRouteLink()
 
 const config = {
   wrapper: 'flex-col items-stretch relative w-full border-b lg:border-b-0 lg:border-r border-gray-200 dark:border-gray-800 lg:w-[--aside-width] flex-shrink-0 hidden lg:flex',

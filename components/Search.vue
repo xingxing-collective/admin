@@ -1,0 +1,27 @@
+<template>
+  <div>
+    <UTooltip :text="$t('Search')" :shortcuts="['⌘', 'K']">
+      <UButton @click="toggleSearch" icon="i-heroicons:magnifying-glass-20-solid"
+        v-bind="{ ...$ui.button.secondary }" />
+    </UTooltip>
+    <UModal v-model="isSearchModalOpen">
+      <UCommandPalette :groups="groups" @update:model-value="onSelect" />
+    </UModal>
+  </div>
+</template>
+<script setup lang="ts">
+const { isSearchModalOpen, toggleSearch } = useUIState()
+const { groups } = useRouteLink()
+const router = useRouter()
+
+function onSelect(option: any) {
+  if (option.click) {
+    option.click()
+  } else if (option.to) {
+    router.push(option.to)
+  } else if (option.href) {
+    window.open(option.href, '_blank')
+  }
+  isSearchModalOpen.value = false
+}
+</script>
