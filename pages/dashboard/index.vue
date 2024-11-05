@@ -11,7 +11,7 @@
             class="col-span-1 rounded-xl divide-y divide-gray-200 dark:divide-gray-800 ring-1 ring-gray-200 dark:ring-gray-800 shadow bg-white dark:bg-gray-900 relative group flex flex-col overflow-hidden group hover:ring-2 hover:ring-primary-500 dark:hover:ring-primary-400 hover:bg-gray-100/50 dark:hover:bg-gray-900/50">
             <div class="flex-1 px-4 py-5 sm:p-3">
               <NuxtLink :to="preview.url" target="_self">
-                <img :src="preview.image.src" :alt="preview.image.alt" loading="lazy" class="w-full  object-fill" />
+                <NuxtImg :src="preview.image.src" :alt="preview.image.alt" loading="lazy" class="w-full  object-fill" />
               </NuxtLink>
             </div>
             <div class="bg-gray-100/50 dark:bg-gray-800/50 px-2 py-2 sm:px-6">
@@ -57,7 +57,7 @@ const tabs = computed(() => {
           src: `/images/antv/${colorMode.value}/l7/gaode.png`,
           alt: 'AntV L7 Gaode Map',
         },
-        url: '/dashboard/antv/l7/gaodemap',
+        url: '/dashboard/antv/l7',
       },
       {
         title: 'AntV L7 MapLibre Map',
@@ -81,7 +81,7 @@ const tabs = computed(() => {
           src: `/images/antv/${colorMode.value}/x6/flowchart.png`,
           alt: 'AntV X6 Flowchart',
         },
-        url: '/dashboard/antv/x6/flowchart',
+        url: '/dashboard/antv/x6',
       },
     ]
   }, {
@@ -97,6 +97,7 @@ const tabs = computed(() => {
     },]
   }]
 })
+
 useSeoMeta({
   title: 'Dashboard Index',
   description: 'Dashboard Index',

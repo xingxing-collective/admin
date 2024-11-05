@@ -26,7 +26,7 @@ export default defineNuxtConfig({
       cssMinify: 'esbuild',
     },
   },
-  modules: ['@nuxt/ui', '@vueuse/nuxt', '@nuxtjs/i18n'],
+  modules: ['@nuxt/ui', '@vueuse/nuxt', '@nuxtjs/i18n', '@nuxt/image'],
   css: ['./assets/css/main.css'],
   runtimeConfig: {
     public: {

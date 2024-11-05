@@ -2,7 +2,9 @@
   <header :class="ui.wrapper" v-bind="attrs">
     <UContainer :class="ui.container">
       <div :class="ui.right">
-        <Search />
+        <ClientOnly>
+          <Search />
+        </ClientOnly>
         <LanguageSwitch />
         <ColorPicker />
         <ColorModeButton />
