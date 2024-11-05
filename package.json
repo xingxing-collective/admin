@@ -37,6 +37,8 @@
     "@antv/x6-plugin-transform": "^2.1.8",
     "@biomejs/biome": "^1.9.4",
     "@ckpack/vue-color": "^1.6.0",
+    "@iconify-json/material-symbols-light": "^1.2.6",
+    "@iconify-json/simple-icons": "^1.2.11",
     "@nuxt/image": "^1.8.1",
     "@nuxt/ui": "^2.18.7",
     "@nuxtjs/i18n": "^8.5.5",
