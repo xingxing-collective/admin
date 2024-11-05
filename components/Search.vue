@@ -14,6 +14,15 @@ const { isSearchModalOpen, toggleSearch } = useUIState()
 const { groups } = useRouteLink()
 const router = useRouter()
 
+defineShortcuts({
+  meta_k: {
+    usingInput: true,
+    handler: () => {
+      isSearchModalOpen.value = !isSearchModalOpen.value
+    }
+  }
+})
+
 function onSelect(option: any) {
   if (option.click) {
     option.click()
