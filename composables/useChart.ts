@@ -104,7 +104,8 @@ export function useChart<T extends ChartType>(
       }
       case 'echarts': {
         if (!rendered.value) {
-          chartInstance.value = init(container.value, colorMode.value);
+          //TODO: set echarts themes see https://echarts.apache.org/handbook/zh/concepts/style/
+          chartInstance.value = init(container.value);
           if (typeof _opts === 'object') {
             options.value = defu(_opts);
             chartInstance.value.setOption(options.value);
