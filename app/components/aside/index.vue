@@ -3,9 +3,9 @@
     <div :class="ui.container">
       <div :class="ui.body">
         <div :class="ui.center">
-          <ULink :to="'/'" v-bind="$ui.button.secondary" />
+          <ULink :to="'/'" v-bind="$ui.button?.secondary" />
           <div class="w-full">
-            <UButton v-bind="$ui.button.secondary" to="/" class="w-full">
+            <UButton v-bind="$ui.button?.secondary" to="/" class="w-full">
               <UIcon name="i-logos-nuxt-icon" class=" w-5 h-5" />
               <span :class="ui.title">Nuxt Admin</span>
             </UButton>

@@ -1,4 +1,4 @@
-import type { UIPresets } from './types/ui';
+import type { UIPresets } from './types';
 
 export default defineAppConfig({
   ui: {

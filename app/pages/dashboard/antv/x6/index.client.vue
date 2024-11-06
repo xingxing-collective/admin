@@ -306,7 +306,7 @@ const addEventListener = (graph: Graph) => {
   // 控制连接桩显示/隐藏
   const showPorts = (ports: NodeListOf<SVGElement>, show: boolean) => {
     for (let i = 0, len = ports.length; i < len; i += 1) {
-      ports[i].style.visibility = show ? 'visible' : 'hidden';
+      ports[i]!.style.visibility = show ? 'visible' : 'hidden';
     }
   };
 

@@ -75,8 +75,8 @@ export function useSheet(sheetType: SheetType) {
     await sheetInstance.value?.render();
   }
 
-  async function resize(size: ResizeObserverSize) {
-    sheetInstance.value?.changeSheetSize(size.inlineSize, size.blockSize);
+  async function resize(size: ResizeObserverSize | undefined) {
+    sheetInstance.value?.changeSheetSize(size?.inlineSize, size?.blockSize);
     await sheetInstance.value?.render(false);
   }
 
@@ -111,7 +111,7 @@ export function useSheet(sheetType: SheetType) {
       { threshold: [0, 0.25, 0.5, 0.75, 1] }
     );
     createResizeObserver(container.value as Element, async ([entry]) => {
-      const [size] = entry.borderBoxSize || [];
+      const [size] = entry?.borderBoxSize || [];
       await resize(size);
     });
   });

@@ -21,7 +21,7 @@ const componentModules = import.meta.glob<Component>(
 );
 const components = computed(() => {
   if (import.meta.client) {
-    return Object.entries(componentModules).sort((a, b) => Number.parseInt(a[0].split('.')[0]) - Number.parseInt(b[0].split('.')[0]));
+    return Object.entries(componentModules).sort((a, b) => Number.parseInt(a[0]?.split('.')?.at(0) || '0') - Number.parseInt(b[0]?.split('.').at(0) || '0'));
   }
   return [];
 });

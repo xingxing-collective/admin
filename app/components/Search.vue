@@ -2,7 +2,7 @@
   <div>
     <UTooltip :text="$t('Search')" :shortcuts="['⌘', 'K']">
       <UButton
-icon="i-heroicons-magnifying-glass-20-solid" v-bind="{ ...$ui.button.secondary }"
+icon="i-heroicons-magnifying-glass-20-solid" v-bind="{ ...$ui.button?.secondary }"
         @click="toggleSearch" />
     </UTooltip>
     <UModal v-model="isSearchModalOpen">

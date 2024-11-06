@@ -13,7 +13,7 @@ export const useObserver = () => {
       threshold: 0.75,
     });
     observer.value = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) requestAnimationFrame(callback);
+      if (entry?.isIntersecting) requestAnimationFrame(callback);
     }, options);
     observer.value.observe(container);
   }
