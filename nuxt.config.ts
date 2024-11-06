@@ -5,7 +5,7 @@ export default defineNuxtConfig({
       title: 'Nuxt Admin',
       titleTemplate: '%s',
       meta: [
-        //eslint-disable-next-line
+         
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         {
@@ -26,7 +26,10 @@ export default defineNuxtConfig({
       cssMinify: 'esbuild',
     },
   },
-  modules: ['@nuxt/ui', '@vueuse/nuxt', '@nuxtjs/i18n', '@nuxt/image'],
+  future: {
+    compatibilityVersion: 4
+  },
+  modules: ['@nuxt/ui', '@vueuse/nuxt', '@nuxtjs/i18n', '@nuxt/image','@nuxt/eslint'],
   css: ['./assets/css/main.css'],
   runtimeConfig: {
     public: {
