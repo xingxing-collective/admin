@@ -86,7 +86,7 @@ export function useSheet(sheetType: SheetType) {
       brandColor: color,
     });
     const newTheme: ThemeCfg = { palette };
-    sheetInstance.value?.setThemeCfg(defu(themeCfg.value, newTheme));
+    sheetInstance.value?.setThemeCfg(defu(newTheme, themeCfg.value));
     await sheetInstance.value?.render(false);
   }
 
