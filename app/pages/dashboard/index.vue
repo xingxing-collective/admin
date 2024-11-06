@@ -35,7 +35,7 @@ const colorMode = useColorMode();
 const tabs = computed(() => {
   return [{
     label: 'AntV',
-    icon: 'antv-icon:index',
+    icon: 'i-simple-icons:antdesign',
     data: [
       {
         title: 'AntV G2',

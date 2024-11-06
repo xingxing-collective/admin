@@ -94,17 +94,5 @@ export default defineNuxtConfig({
     preference: 'light',
     fallback: 'light',
   },
-  icon: {
-    customCollections: [
-      {
-        prefix: 'antv-icon',
-        dir: './assets/icons/antv',
-      },
-      {
-        prefix: 'threejs-icon',
-        dir: './assets/icons/threejs',
-      },
-    ],
-  },
   compatibilityDate: '2024-10-24',
 });

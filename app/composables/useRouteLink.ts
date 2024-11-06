@@ -34,7 +34,7 @@ export const useRouteLink = () => {
         {
           id: 'dashboard/antv',
           label: 'AntV',
-          icon: 'antv-icon:index',
+          icon: 'i-simple-icons:antdesign',
           to: '/dashboard',
           defaultOpen: route.path.startsWith('/dashboard/antv'),
           tooltip: {
@@ -44,19 +44,19 @@ export const useRouteLink = () => {
             {
               id: 'antv/g2',
               label: 'G2',
-              icon: 'antv-icon:g2',
+              icon: 'i-material-symbols:bar-chart-rounded',
               to: '/dashboard/antv/g2',
             },
             {
               id: 'antv/s2',
               label: 'S2',
-              icon: 'antv-icon:s2',
+              icon: 'i-heroicons:table-cells-20-solid',
               to: '/dashboard/antv/s2',
             },
             {
               id: 'antv/l7',
               label: 'L7',
-              icon: 'antv-icon:l7',
+              icon: 'i-heroicons:map-pin',
               to: '/dashboard/antv/l7',
               defaultOpen: route.path.startsWith('/dashboard/antv/l7'),
               children: [
@@ -89,7 +89,7 @@ export const useRouteLink = () => {
             {
               id: 'antv/x6',
               label: 'X6',
-              icon: 'antv-icon:x6',
+              icon: 'i-hugeicons:workflow-circle-03',
               to: '/dashboard/antv/x6',
               defaultOpen: route.path.startsWith('/dashboard/antv/x6'),
               children: [
