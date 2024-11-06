@@ -66,6 +66,9 @@ importers:
       '@ckpack/vue-color':
         specifier: ^1.6.0
         version: 1.6.0(vue@3.5.12(typescript@5.6.3))
+      '@iconify-json/hugeicons':
+        specifier: ^1.2.1
+        version: 1.2.1
       '@iconify-json/material-symbols-light':
         specifier: ^1.2.6
         version: 1.2.6
@@ -1201,6 +1204,9 @@ packages:
 
   '@iconify-json/heroicons@1.2.1':
     resolution: {integrity: sha512-TkKfS5U27kE5MXmSGLzPoz95BP5VA9xEJXwJFwmPMVLX+xyWq0OkoiWTUXB0uAoQODpb8BaRpzSydItrq9fIRA==}
+
+  '@iconify-json/hugeicons@1.2.1':
+    resolution: {integrity: sha512-IedWO3xgMuRdRaolyl8kLOMA01xQ2QhldCKWrqtIxEpalndU7hoh1dUR00ackhWLFDwpKdGQGzuF5/Szaw40CQ==}
 
   '@iconify-json/material-symbols-light@1.2.6':
     resolution: {integrity: sha512-TpDzfXt5Br1e7xuzKEy63bEuc56xsQBS07Am4fpXqQWvtvDxAQ4y1Ik3ca3ougmNPtW2dsR1XQmjMxNb5mGoUw==}
@@ -7279,6 +7285,10 @@ snapshots:
   '@humanwhocodes/retry@0.3.1': {}
 
   '@iconify-json/heroicons@1.2.1':
+    dependencies:
+      '@iconify/types': 2.0.0
+
+  '@iconify-json/hugeicons@1.2.1':
     dependencies:
       '@iconify/types': 2.0.0
 

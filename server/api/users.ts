@@ -1,3 +1,4 @@
+// see https://github.com/nuxt-ui-pro/dashboard/blob/main/app/pages/users.vue
 import type { User } from '~/types'
 
 const users: User[] = [{
