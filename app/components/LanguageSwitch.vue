@@ -18,7 +18,6 @@ const { locale, locales, setLocale } = useI18n()
 const handleSetLocale = (code: string) => {
   if (locale.value !== code) {
     setLocale(code)
-    window.location.reload();
   }
 }
 </script>

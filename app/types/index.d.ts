@@ -3,8 +3,8 @@ import type { Avatar, Badge, Chip, Tooltip, Link as ULink } from '#ui/types';
 
 export type NestedKeyOf<ObjectType extends Record<string, any>> = {
   [Key in keyof ObjectType]: ObjectType[Key] extends Record<string, any>
-    ? NestedKeyOf<ObjectType[Key]>
-    : Key;
+  ? NestedKeyOf<ObjectType[Key]>
+  : Key;
 }[keyof ObjectType];
 
 export type ButtonColor =
@@ -33,20 +33,20 @@ export type ButtonVariant =
   | 'outline'
   | 'soft'
   | NestedKeyOf<{
-      white: {
-        solid: string;
-        ghost: string;
-      };
-      gray: {
-        solid: string;
-        ghost: string;
-        link: string;
-      };
-      black: {
-        solid: string;
-        link: string;
-      };
-    }>;
+    white: {
+      solid: string;
+      ghost: string;
+    };
+    gray: {
+      solid: string;
+      ghost: string;
+      link: string;
+    };
+    black: {
+      solid: string;
+      link: string;
+    };
+  }>;
 
 export interface UIPresets {
   [key: string]: Record<
@@ -107,3 +107,6 @@ export interface User {
   location: string
 }
 
+export interface DataRecord {
+  x: number; y: number
+}

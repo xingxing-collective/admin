@@ -1,4 +1,4 @@
-import defu from 'defu';
+import { defu } from 'defu';
 
 export const useObserver = () => {
   const observer = ref<IntersectionObserver>();

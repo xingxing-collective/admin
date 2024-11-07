@@ -1,3 +1,23 @@
 {
-  "words": ["biomejs", "nuxt", "nuxi", "nuxtjs", "tailwindcss", "unjs"]
+  "words": [
+    "antv",
+    "apacheecharts",
+    "biomejs",
+    "ckpack",
+    "defu",
+    "echarts",
+    "hugeicons",
+    "iconify",
+    "linebreak",
+    "nuxi",
+    "nuxt",
+    "nuxtjs",
+    "pinia",
+    "snapline",
+    "tailwindcss",
+    "typecheck",
+    "unjs",
+    "unovis",
+    "vueuse"
+  ]
 }
