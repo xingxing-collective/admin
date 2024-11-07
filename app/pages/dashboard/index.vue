@@ -6,9 +6,9 @@
           item.label }}</span>
       </template>
       <template #item="{ item }">
-        <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8">
-          <div
-v-for="preview in item.data" :key="preview.url"
+        <div
+          :class="['grid grid-cols-1  gap-8', item.label === 'AntV' ? 'sm:grid-cols-2 xl:grid-cols-3' : 'w-2/3 h-2/3']">
+          <div v-for="preview in item.data" :key="preview.url"
             class="col-span-1 rounded-xl divide-y divide-gray-200 dark:divide-gray-800 ring-1 ring-gray-200 dark:ring-gray-800 shadow bg-white dark:bg-gray-900 relative group flex flex-col overflow-hidden group hover:ring-2 hover:ring-primary-500 dark:hover:ring-primary-400 hover:bg-gray-100/50 dark:hover:bg-gray-900/50">
             <div class="flex-1 px-4 py-5 sm:p-3">
               <NuxtLink :to="preview.url" target="_self">
@@ -22,8 +22,7 @@ v-for="preview in item.data" :key="preview.url"
         </div>
       </template>
       <template #icon="{ item, selected }">
-        <UIcon
-:name="item.icon" class="w-6 h-6 flex-shrink-0 me-2"
+        <UIcon :name="item.icon" class="w-6 h-6 flex-shrink-0 me-2"
           :class="[selected && 'text-primary-500 dark:text-primary-400']" />
       </template>
     </UTabs>
@@ -34,6 +33,7 @@ const colorMode = useColorMode();
 
 const tabs = computed(() => {
   return [{
+    id: 'antv',
     label: 'AntV',
     icon: 'i-simple-icons:antdesign',
     data: [
@@ -87,6 +87,7 @@ const tabs = computed(() => {
       },
     ]
   }, {
+    id: 'echarts',
     label: 'ECharts',
     icon: 'i-simple-icons:apacheecharts',
     data: [{
@@ -97,6 +98,17 @@ const tabs = computed(() => {
       },
       url: '/dashboard/echarts',
     },]
+  }, {
+    id: 'unovis',
+    label: 'Unovis',
+    icon: 'i-token:uno',
+    data: [{
+      title: 'Unovis',
+      image: {
+        src: `/images/unovis/${colorMode.value}/preview.png`,
+        alt: 'Unovis'
+      }
+    }]
   }]
 })
 

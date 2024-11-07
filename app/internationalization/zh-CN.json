@@ -48,5 +48,9 @@
   "Basic Scatter Chart": "基础散点图",
   "Exponential Regression": "指数回归（使用统计插件）",
   "GEO Beef Cuts": "庖丁解牛",
-  "Basic Candlestick": "基础 K 线图"
+  "Basic Candlestick": "基础 K 线图",
+  "Basic Grouped Bar Chart":"基础分组条形图",
+  "Basic Bar Chart":"基础条形图",
+  "Basic Horizontal Bar Chart":"基础横向条形图",
+  "Basic Donut Chart":"基础甜甜圈图"
 }

@@ -30,7 +30,7 @@ export default defineNuxtConfig({
     compatibilityVersion: 4
   },
   modules: ['@nuxt/ui', '@vueuse/nuxt', '@nuxtjs/i18n', '@nuxt/image','@nuxt/eslint'],
-  css: ['./assets/css/main.css'],
+  css: ['./assets/css/main.css','./assets/css/override.css'],
   runtimeConfig: {
     public: {
       map: {

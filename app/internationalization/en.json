@@ -48,5 +48,9 @@
   "Basic Scatter Chart": "Basic Scatter Chart",
   "Exponential Regression": "Exponential Regression",
   "GEO Beef Cuts": "GEO Beef Cuts",
-  "Basic Candlestick": "Basic Candlestick"
+  "Basic Candlestick": "Basic Candlestick",
+  "Basic Grouped Bar Chart":"Basic Grouped Bar Chart",
+  "Basic Bar Chart":"Basic Bar Chart",
+  "Basic Horizontal Bar Chart":"Basic Horizontal Bar Chart",
+  "Basic Donut Chart":"Basic Donut Chart"
 }

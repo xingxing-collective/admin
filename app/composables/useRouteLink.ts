@@ -114,9 +114,18 @@ export const useRouteLink = () => {
             text: 'ECharts',
           },
         },
+        {
+          id: 'dashboard/unovis',
+          label: 'Unovis',
+          to: '/dashboard/unovis',
+          icon: 'i-token:uno',
+          tooltip: {
+            text: 'Unovis'
+          }
+        }
       ],
-    },{
-      id:'users',
+    }, {
+      id: 'users',
       label: t('Users'),
       icon: 'i-heroicons-user-group',
       to: '/users',

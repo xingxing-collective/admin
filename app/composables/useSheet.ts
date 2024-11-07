@@ -5,7 +5,7 @@ import type {
   ThemeCfg,
 } from '@antv/s2';
 import { PivotSheet, TableSheet, generatePalette, getPalette } from '@antv/s2';
-import defu from 'defu';
+import { defu } from 'defu';
 
 export type SheetType =
   | 'pivot'

@@ -1,9 +1,8 @@
 <template>
-  <UTabs
-class="px-4 py-4 w-full h-full " :items="items" orientation="vertical"
+  <UTabs class="px-4 py-4 w-full max-h-full " :items="items" orientation="vertical"
     :ui="{ wrapper: 'flex gap-4', list: { base: 'overflow-y-auto', tab: { height: 'h-32' }, width: 'w-48' } }">
     <template #default="{ item, index, selected }">
-      <div class="h-full">
+      <div class="h-full flex items-center">
         <slot name="default" :item="item" :index="index" :selected="selected">
           {{ item.label }}
         </slot>
