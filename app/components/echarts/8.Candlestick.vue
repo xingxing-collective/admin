@@ -9,8 +9,9 @@
 <script setup lang="ts">
 import type { ECharts, EChartsOption } from 'echarts';
 const { container } = useChart('echarts', rendered)
+const { primaryColors } = useTheme()
 
-const options: EChartsOption = {
+const options = computed<EChartsOption>(() => ({
   xAxis: {
     data: ['2017-10-24', '2017-10-25', '2017-10-26', '2017-10-27']
   },
@@ -18,6 +19,7 @@ const options: EChartsOption = {
   series: [
     {
       type: 'candlestick',
+      color: primaryColors.value.map(x => x.hex),
       data: [
         [20, 34, 10, 38],
         [40, 35, 30, 50],
@@ -26,9 +28,9 @@ const options: EChartsOption = {
       ]
     }
   ]
-}
+}))
 
 function rendered(chartInstance: ECharts) {
-  chartInstance?.setOption(options)
+  chartInstance?.setOption(options.value)
 }
 </script>
