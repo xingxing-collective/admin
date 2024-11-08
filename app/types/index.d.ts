@@ -1,5 +1,9 @@
 import type { HSL, HSV, RGBA } from '@ctrl/tinycolor';
 import type { Avatar, Badge, Chip, Tooltip, Link as ULink } from '#ui/types';
+import type tailwindColors from '#tailwind-config/theme/colors';
+
+export type TailwindColors = Record<any, any>
+export type TailwindColorKeys = keyof typeof tailwindColors
 
 export type NestedKeyOf<ObjectType extends Record<string, any>> = {
   [Key in keyof ObjectType]: ObjectType[Key] extends Record<string, any>

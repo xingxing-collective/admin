@@ -7,19 +7,23 @@
   </div>
 </template>
 <script setup lang="ts">
-const { container } = useChart('echarts', {
+import type { EChartsOption } from 'echarts';
+
+const { primaryColors } = useTheme()
+const options = computed<EChartsOption>(() => ({
   tooltip: {
     trigger: 'item'
   },
   legend: {
     orient: 'vertical',
-    left: 'left'
+    left: 'left',
   },
   series: [
     {
       name: 'Access From',
       type: 'pie',
       radius: '50%',
+      color: primaryColors.value.map(x => x.hex),
       data: [
         { value: 1048, name: 'Search Engine' },
         { value: 735, name: 'Direct' },
@@ -36,5 +40,6 @@ const { container } = useChart('echarts', {
       }
     }
   ]
-})
+}))
+const { container } = useChart('echarts', options.value)
 </script>

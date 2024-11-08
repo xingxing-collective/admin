@@ -7,6 +7,7 @@
   </div>
 </template>
 <script setup lang="ts">
+const { primaryColors } = useTheme()
 const { container } = useChart('echarts', {
   tooltip: {
     trigger: 'item'
@@ -20,6 +21,7 @@ const { container } = useChart('echarts', {
       name: 'Access From',
       type: 'pie',
       radius: ['40%', '70%'],
+      color: primaryColors.value.map(x => x.hex),
       avoidLabelOverlap: false,
       label: {
         show: false,

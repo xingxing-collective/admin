@@ -11,7 +11,6 @@ import type { ECharts, EChartsOption } from 'echarts';
 const { container } = useChart('echarts', rendered)
 
 const options: EChartsOption = {
-  backgroundColor: '#2c343c',
   tooltip: {
     trigger: 'item'
   },

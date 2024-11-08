@@ -8,9 +8,10 @@
 </template>
 <script setup lang="ts">
 import type { ECharts, EChartsOption } from 'echarts';
-const { container } = useChart('echarts', rendered)
+const { container, chartInstance } = useChart('echarts', rendered)
 
-const options: EChartsOption = {
+const { primaryColor } = useTheme()
+const options = computed<EChartsOption>(() => ({
   xAxis: {},
   yAxis: {},
   series: [
@@ -40,12 +41,17 @@ const options: EChartsOption = {
         [7.08, 5.82],
         [5.02, 5.68]
       ],
-      type: 'scatter'
+      type: 'scatter',
+      color: primaryColor.value
     }
   ]
-}
+}))
 
 function rendered(chartInstance: ECharts) {
-  chartInstance?.setOption(options)
+  chartInstance?.setOption(options.value)
 }
+
+watch(primaryColor, () => {
+  chartInstance.value?.setOption(options.value)
+})
 </script>

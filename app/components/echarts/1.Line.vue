@@ -7,10 +7,12 @@
   </div>
 </template>
 <script setup lang="ts">
-import type { ECharts } from 'echarts';
-const { container } = useChart('echarts',rendered)
+import type { ECharts, EChartsOption } from 'echarts';
+const { container, chartInstance } = useChart('echarts', rendered)
 
-const options = {
+const { primaryColor } = useTheme()
+
+const options = computed<EChartsOption>(() => ({
   xAxis: {
     type: 'category',
     data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
@@ -21,12 +23,22 @@ const options = {
   series: [
     {
       data: [150, 230, 224, 218, 135, 147, 260],
-      type: 'line'
+      type: 'line',
+      symbol: 'none',
+      smooth: true,
+      lineStyle: {
+        color: primaryColor.value
+      }
     }
   ]
-}
+}))
+
+
+watch(primaryColor, () => {
+  chartInstance.value?.setOption(options.value)
+})
 
 function rendered(chartInstance: ECharts) {
-  chartInstance?.setOption(options)
+  chartInstance?.setOption(options.value)
 }
-</script>cript>
+</script>
