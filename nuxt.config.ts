@@ -29,7 +29,7 @@ export default defineNuxtConfig({
   future: {
     compatibilityVersion: 4
   },
-  modules: ['@nuxt/ui', '@vueuse/nuxt', '@nuxtjs/i18n', '@nuxt/image','@nuxt/eslint'],
+  modules: ['@nuxt/ui', '@vueuse/nuxt', '@nuxtjs/i18n', '@nuxt/image', '@nuxt/eslint', '@nuxtjs/sitemap', '@nuxtjs/seo'],
   css: ['./assets/css/main.css','./assets/css/override.css'],
   runtimeConfig: {
     public: {
@@ -93,6 +93,12 @@ export default defineNuxtConfig({
   colorMode: {
     preference: 'light',
     fallback: 'light',
+  },
+  site:{
+    url: 'https://xingxing-nuxt-admin.vercel.app',
+    name: 'Nuxt Admin',
+    description: 'System built with Nuxt',
+    defaultLocale: 'en',
   },
   compatibilityDate: '2024-10-24',
 });
