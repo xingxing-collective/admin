@@ -10,8 +10,10 @@ const { container } = useMap(MapType.GAODE, {
   center: [107.054293, 35.246265],
   zoom: 4.056,
 });
-useSeoMeta({
+useHead({
   title: 'L7 | AntV | Dashboard',
-  description: 'L7 | AntV | Dashboard',
+  meta: [
+    { name: 'description', content: 'L7 | AntV | Dashboard' },
+  ],
 });
 </script>

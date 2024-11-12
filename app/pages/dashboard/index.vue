@@ -111,9 +111,10 @@ const tabs = computed(() => {
     }]
   }]
 })
-
-useSeoMeta({
-  title: 'Dashboard Index',
-  description: 'Dashboard Index',
+useHead({
+  title: 'Dashboard',
+  meta: [
+    { name: 'description', content: 'Dashboard' },
+  ],
 });
 </script>
