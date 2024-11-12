@@ -39,7 +39,7 @@ export default defineAppConfig({
         secondary: {
           color: 'gray',
           variant: 'ghost',
-        },
+        }
       },
     } as UIPresets,
   },

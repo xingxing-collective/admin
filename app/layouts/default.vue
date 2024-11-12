@@ -18,6 +18,7 @@
         </div>
       </div>
     </div>
+    <UModals />
   </div>
 </template>
 <script setup lang="ts">

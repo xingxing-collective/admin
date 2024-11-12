@@ -35,7 +35,7 @@ export const useRouteLink = () => {
           id: 'dashboard/antv',
           label: 'AntV',
           icon: 'i-simple-icons:antdesign',
-          to: '/dashboard',
+          to: '/dashboard/antv/g2',
           defaultOpen: route.path.startsWith('/dashboard/antv'),
           tooltip: {
             text: 'AntV',
@@ -124,7 +124,8 @@ export const useRouteLink = () => {
           }
         }
       ],
-    }, {
+    }, 
+    {
       id: 'users',
       label: t('Users'),
       icon: 'i-heroicons-user-group',
@@ -172,6 +173,13 @@ export const useRouteLink = () => {
         key: 'links',
         label: 'Links',
         commands: getCommands(links.value),
+      }, {
+        key: 'dashboard',
+        label: 'Dashboard',
+        commands: getCommands(
+          links.value
+            .find((x) => x.id === 'dashboard')?.children?.filter(x => x.id !== 'dashboard/overview')
+        ),
       },
       {
         key: 'antv',
