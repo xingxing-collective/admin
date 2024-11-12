@@ -7,9 +7,10 @@
 </template>
 <script setup lang="ts">
 const { container } = useMap(MapType.MAPBOX);
-
-useSeoMeta({
-  title: 'L7 | AntV | Dashboard',
-  description: 'L7 | AntV | Dashboard',
+useHead({
+  title: 'MapboxMap | AntV | Dashboard',
+  meta: [
+    { name: 'description', content: 'MapboxMap | AntV | Dashboard' },
+  ],
 });
 </script>

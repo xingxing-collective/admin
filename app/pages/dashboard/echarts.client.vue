@@ -17,9 +17,10 @@ const components = import.meta.glob<Component>(
     import: 'default',
   }
 );
-
-useSeoMeta({
+useHead({
   title: 'ECharts | Dashboard',
-  description: 'ECharts | Dashboard',
+  meta: [
+    { name: 'description', content: 'ECharts | Dashboard' },
+  ],
 });
 </script>

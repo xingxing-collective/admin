@@ -5,10 +5,11 @@ const components = import.meta.glob<Component>('~/components/unovis/**', {
     import: 'default',
 })
 
-
-useSeoMeta({
+useHead({
   title: 'Unovis | Dashboard',
-  description: 'Unovis | Dashboard',
+  meta: [
+    { name: 'description', content: 'Unovis | Dashboard' },
+  ],
 });
 </script>
 <template>

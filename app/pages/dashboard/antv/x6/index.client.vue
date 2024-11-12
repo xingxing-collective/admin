@@ -552,10 +552,11 @@ onMounted(() => {
   addEventListener(graph.value!);
   createNode(graph.value!, stencil.value!);
 });
-
-useSeoMeta({
+useHead({
   title: 'X6 | AntV | Dashboard',
-  description: 'X6 | AntV | Dashboard',
+  meta: [
+    { name: 'description', content: 'X6 | AntV | Dashboard' },
+  ],
 });
 </script>
 <style>

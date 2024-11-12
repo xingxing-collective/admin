@@ -53,5 +53,19 @@
   "Basic Bar Chart":"Basic Bar Chart",
   "Basic Horizontal Bar Chart":"Basic Horizontal Bar Chart",
   "Basic Donut Chart":"Basic Donut Chart",
-  "Welcome back":"Welcome back"
+  "Welcome back":"Welcome back",
+  "Sign up":"Sign up",
+  "Sign in":"Sign in",
+  "Don't have an account":"Don't have an account",
+  "Remember me":"Remember me",
+  "Continue":"Continue",
+  "OR":"OR",
+  "Continue with Github":"Continue with Github",
+  "Already have an account":"Already have an account",
+  "Name":"Name",
+  "Email":"Email",
+  "Password":"Password",
+  "Enter your name":"Enter your name",
+  "Enter your email":"Enter your email",
+  "Enter your password":"Enter your password"
 }

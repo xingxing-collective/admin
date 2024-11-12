@@ -17,9 +17,10 @@ const components = import.meta.client ? import.meta.glob<Component>(
     import: 'default',
   }
 ) : [];
-
-useSeoMeta({
+useHead({
   title: 'G2 | AntV | Dashboard',
-  description: 'G2 | AntV | Dashboard',
+  meta: [
+    { name: 'description', content: 'G2 | AntV | Dashboard' },
+  ],
 });
 </script>

@@ -13,6 +13,12 @@ const _useAuth = () => {
         user.value = u
         router.push('/')
     }
+
+    function signup(u: User) {
+        user.value = u
+        router.push('/signin')
+    }
+
     function signout() {
         user.value = undefined
         router.push('/signin')
@@ -21,6 +27,7 @@ const _useAuth = () => {
     return {
         user,
         signin,
+        signup,
         signout
     }
 }

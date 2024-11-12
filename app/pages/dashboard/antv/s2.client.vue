@@ -8,12 +8,14 @@
 </template>
 
 <script setup lang="ts">
-const components = import.meta.glob<Component>(['~/components/antv/s2/**'], {
+const components = import.meta.client ? import.meta.glob<Component>(['~/components/antv/s2/**'], {
   eager: true,
   import: 'default',
-});
-useSeoMeta({
+}) : [];
+useHead({
   title: 'S2 | AntV | Dashboard',
-  description: 'S2 | AntV | Dashboard',
+  meta: [
+    { name: 'description', content: 'S2 | AntV | Dashboard' },
+  ],
 });
 </script>
