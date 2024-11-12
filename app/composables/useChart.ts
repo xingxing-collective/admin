@@ -1,15 +1,10 @@
 import { Chart } from '@antv/g2';
 import { defu } from 'defu';
-import {
-  type ECharts,
-  type EChartsOption,
-  init,
-  registerMap,
-  type registerTransform,
-} from 'echarts';
+import { init, registerMap } from 'echarts'
+import type { ECharts, EChartsOption, registerTransform } from 'echarts'
 import type { ShallowRef } from 'vue';
 
-type RuntimeOptions = ConstructorParameters<typeof Chart>[0];
+type AntvRuntimeOptions = ConstructorParameters<typeof Chart>[0];
 
 type EChartsTransformPlugin = Parameters<typeof registerTransform>[0];
 
@@ -24,26 +19,30 @@ type Plugin = EChartsMapPlugin | EChartsTransformPlugin;
 type ChartType = 'echarts' | 'antv';
 type ChartInstance = Chart | ECharts;
 type ChartOptions<T extends ChartType> = T extends 'antv'
-  ? RuntimeOptions
+  ? AntvRuntimeOptions
   : EChartsOption;
 
 type ChartCallback<T extends ChartType> = (
   chart: T extends 'antv' ? Chart : ECharts
 ) => Promise<void> | void;
 
+type AntvChartFn<T extends ChartType> = {
+  container: Ref<HTMLElement | undefined>;
+  chartInstance: ShallowRef<Chart | undefined, Chart | undefined>;
+  rendered: Ref<boolean, boolean>;
+  use: (this: ChartFn<T>, plugin: Plugin) => ChartFn<T>;
+};
+
+type EchartsChartFn<T extends ChartType> = {
+  container: Ref<HTMLElement | undefined>;
+  chartInstance: ShallowRef<ECharts | undefined, ECharts | undefined>;
+  rendered: Ref<boolean, boolean>;
+  use: (this: ChartFn<T>, plugin: Plugin) => ChartFn<T>;
+};
+
 type ChartFn<T extends ChartType> = T extends 'antv'
-  ? {
-      container: Ref<HTMLElement | undefined>;
-      chartInstance: ShallowRef<Chart | undefined, Chart | undefined>;
-      rendered: Ref<boolean, boolean>;
-      use: (this: ChartFn<T>, plugin: Plugin) => ChartFn<T>;
-    }
-  : {
-      container: Ref<HTMLElement | undefined>;
-      chartInstance: ShallowRef<ECharts | undefined, ECharts | undefined>;
-      rendered: Ref<boolean, boolean>;
-      use: (this: ChartFn<T>, plugin: Plugin) => ChartFn<T>;
-    };
+  ? AntvChartFn<T>
+  : EchartsChartFn<T>;
 
 export function useChart<T extends ChartType>(
   type: T,
@@ -77,7 +76,7 @@ export function useChart<T extends ChartType>(
               autoFit: true,
               theme: colorMode.value,
             });
-            chartInstance.value = new Chart(options.value as RuntimeOptions);
+            chartInstance.value = new Chart(options.value as AntvRuntimeOptions);
             // @ts-ignore
             if (hook) hook(chartInstance.value);
             await chartInstance.value.render();
@@ -156,9 +155,6 @@ export function useChart<T extends ChartType>(
       resize();
     });
   });
-
-  //TODO: Set chart Theme
-  watch(colorMode, () => {});
 
   return {
     container,
