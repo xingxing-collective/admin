@@ -53,5 +53,19 @@
   "Basic Bar Chart":"基础条形图",
   "Basic Horizontal Bar Chart":"基础横向条形图",
   "Basic Donut Chart":"基础甜甜圈图",
-  "Welcome back":"欢迎回来"
+  "Welcome back":"欢迎回来",
+  "Sign up":"注册",
+  "Sign in":"登录",
+  "Don't have an account":"没有账号",
+  "Remember me":"记住我",
+  "Continue":"继续",
+  "OR":"或",
+  "Continue with Github":"使用 Github 登录",
+  "Already have an account":"已有账号",
+  "Name":"姓名",
+  "Email":"邮箱",
+  "Password":"密码",
+  "Enter your name":"请输入姓名",
+  "Enter your email":"请输入邮箱",
+  "Enter your password":"请输入密码"
 }

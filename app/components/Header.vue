@@ -14,7 +14,7 @@ to="https://github.com/xingxing-collective/nuxt-admin" v-bind="{ ...$ui.button?.
       </div>
     </UContainer>
     <USlideover v-model="isHeaderDialogOpen" side="left" :class="ui.slideover.wrapper">
-      <Aside :ui="{ wrapper: '' }" />
+      <Aside  :ui="{ wrapper: 'flex h-full' }" />
     </USlideover>
   </header>
 </template>
