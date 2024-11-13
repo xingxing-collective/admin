@@ -67,5 +67,8 @@
   "Password":"Password",
   "Enter your name":"Enter your name",
   "Enter your email":"Enter your email",
-  "Enter your password":"Enter your password"
+  "Enter your password":"Enter your password",
+  "Continue with Gitlab":"Continue with Gitlab",
+  "Login with Passkey":"Login with Passkey",
+  "Continue with Email":"Continue with Email"
 }

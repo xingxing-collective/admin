@@ -1,11 +1,11 @@
 <script setup lang="ts">
-const { user,signout } = useAuth()
+const { user, clear } = useUserSession()
 const { metaSymbol } = useShortcuts()
 const { isSearchModalOpen } = useUIState()
 
 const items = [
     [{
-        label: user.value?.email || '',
+        label: (user.value as any)?.login || '',
         slot: 'account',
         disabled: true
     }], [{
@@ -37,8 +37,9 @@ const items = [
     }], [{
         label: 'Sign out',
         icon: 'i-heroicons-arrow-left-on-rectangle',
-        click: () => {
-            signout()
+        click: ()=>{
+            clear()
+            navigateTo('/signin')
         }
     }]
 ]
@@ -50,9 +51,9 @@ const items = [
         :popper="{ strategy: 'absolute', placement: 'top' }">
         <UButton v-bind="$ui.button?.secondary" class="w-full">
             <template #leading>
-                <UAvatar src="https://avatars.githubusercontent.com/u/148429905?v=4" size="2xs" />
+                <UAvatar :src="`https://avatars.githubusercontent.com/u/${(user as any)?.id}?v=4`" size="2xs" />
             </template>
-            <span class="truncate">{{ user?.email }}</span>
+            <span class="truncate">{{ (user as any)?.login }}</span>
             <template #trailing>
                 <UIcon name="i-heroicons-ellipsis-vertical" class="w-5 h-5 ml-auto" />
             </template>

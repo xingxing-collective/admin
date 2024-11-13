@@ -52,6 +52,7 @@
     "echarts": "^5.5.1",
     "husky": "^9.1.6",
     "nuxt": "^3.13.2",
+    "nuxt-auth-utils": "^0.5.3",
     "zod": "^3.23.8"
   },
   "license": "MIT"

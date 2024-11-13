@@ -1,7 +1,7 @@
 import type { AsideLink } from '~/types';
 import type { BreadcrumbLink, Group } from '#ui/types';
 
-export const useRouteLink = () => {
+ const _useRouteLink = () => {
   const route = useRoute();
   const { t } = useI18n();
   const colorMode = useColorMode();
@@ -217,3 +217,5 @@ export const useRouteLink = () => {
     groups,
   };
 };
+
+export const useRouteLink = createSharedComposable(_useRouteLink);

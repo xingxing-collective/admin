@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { z } from 'zod'
-const { signup } = useAuth()
 
 const state = reactive({
     name: undefined,
@@ -15,7 +14,6 @@ const schema = z.object({
 })
 
 function onSubmit() {
-    signup(state)
 }
 
 definePageMeta({
@@ -51,6 +49,7 @@ definePageMeta({
                     <UInput v-model="state.password" type="password" :placeholder="$t('Enter your password')" />
                 </UFormGroup>
                 <UButton block type="submit">{{ $t('Sign up') }}</UButton>
+                
             </UForm>
         </UCard>
     </div>

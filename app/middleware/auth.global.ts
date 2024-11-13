@@ -1,8 +1,8 @@
 export default defineNuxtRouteMiddleware((to, _from) => {
-    const { user } = useAuth()
-    const excludePath = ['/signin', '/signup'];
+    const { loggedIn } = useUserSession()
+    const excludePath = ['/signin', '/signup', '/signin/email'];
 
-    if (!user.value?.email && !excludePath.includes(to.path)) {
+    if (!loggedIn.value && !excludePath.includes(to.path)) {
         return navigateTo('/signin')
     }
 })
