@@ -2,8 +2,6 @@
 import { z } from 'zod'
 import { useStorage } from '@vueuse/core'
 
-const { signin } = useAuth()
-
 const state = reactive({
     email: undefined,
     password: undefined
@@ -19,12 +17,12 @@ const showPassword = ref(false)
 const rememberMe = useStorage('rememberMe', false)
 
 function onSubmit() {
-    signin(state)
 }
 
 definePageMeta({
     layout: 'guest'
 })
+
 </script>
 <template>
     <div class="flex justify-center items-center h-full">
@@ -60,8 +58,8 @@ definePageMeta({
                 </UFormGroup>
                 <UCheckbox v-model="rememberMe" :label="$t('Remember me')" />
                 <UButton block color="primary" type="submit">{{ $t('Continue') }}</UButton>
-                <UDivider :label="$t('OR')" />
-                <UButton block color="white" icon="i-simple-icons-github" :label="$t('Continue with Github')" />
+                <ULink to="/signin" class="text-[#006bff] dark:text-[#62a5e0] block text-center">{{
+                    $t('← Other Login options') }}</ULink>
             </UForm>
         </UCard>
     </div>

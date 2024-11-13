@@ -1,11 +1,21 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  devtools: {
+    enabled: true,
+  },
+  nitro: {
+    routeRules: {
+      '/api/**': {
+        isr: false
+      }
+    }
+  },
   app: {
     head: {
       title: 'Nuxt Admin',
       titleTemplate: '%s',
       meta: [
-         
+
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         {
@@ -29,8 +39,17 @@ export default defineNuxtConfig({
   future: {
     compatibilityVersion: 4
   },
-  modules: ['@nuxt/ui', '@vueuse/nuxt', '@nuxtjs/i18n', '@nuxt/image', '@nuxt/eslint', '@nuxtjs/sitemap', '@nuxtjs/seo'],
-  css: ['./assets/css/main.css','./assets/css/override.css'],
+  modules: [
+    '@nuxt/ui',
+    '@vueuse/nuxt',
+    '@nuxtjs/i18n',
+    '@nuxt/image',
+    '@nuxt/eslint',
+    '@nuxtjs/sitemap',
+    '@nuxtjs/seo',
+    'nuxt-auth-utils',
+  ],
+  css: ['./assets/css/main.css', './assets/css/override.css'],
   runtimeConfig: {
     public: {
       map: {
@@ -94,7 +113,7 @@ export default defineNuxtConfig({
     preference: 'light',
     fallback: 'light',
   },
-  site:{
+  site: {
     url: 'https://xingxing-nuxt-admin.vercel.app',
     name: 'Nuxt Admin',
     description: 'System built with Nuxt',

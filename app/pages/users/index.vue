@@ -20,9 +20,9 @@
           class="capitalize" />
       </template>
       <template #actions-data>
-        <UButton icon="i-heroicons-pencil-square" variant="ghost" size="xs" />
-        <UButton icon="i-heroicons-eye" variant="ghost" size="xs" />
-        <UButton icon="i-heroicons-trash" variant="ghost" size="xs" />
+        <UButton icon="i-heroicons-pencil-square" size="xs" />
+        <UButton icon="i-heroicons-eye" size="xs" />
+        <UButton icon="i-heroicons-trash" size="xs" />
       </template>
     </UTable>
     <div class="flex justify-end px-3 py-3.5 border-t border-gray-200 dark:border-gray-700 gap-2 items-center">
