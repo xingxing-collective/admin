@@ -70,5 +70,6 @@
   "Enter your password":"请输入密码",
   "Continue with Gitlab":"使用 Gitlab 登录",
   "Login with Passkey":"使用 Passkey 登录",
-  "Continue with Email":"使用邮箱登录"
+  "Continue with Email":"使用邮箱登录",
+  "Other Login options":"其他登录方式"
 }

@@ -32,12 +32,7 @@ export const useMap = (
 ) => {
   const container = ref<HTMLDivElement>();
   const colorMode = useColorMode();
-  // get gaode and tencent and baidu maps tokens
-  const {
-    public: {
-      map: { gaode, baidu, tencent, mapLibre, mapbox },
-    },
-  } = useRuntimeConfig();
+  const { gaodeToken, baiduToken, tencentToken, mapboxToken, maplibreToken } = useRuntimeConfig().public;
 
   const mapInstance = shallowRef<MapInstanceType>();
   const scene = shallowRef<Scene>();
@@ -46,28 +41,26 @@ export const useMap = (
   const themesConfig = computed(() => {
     // TODO: tencent map theme only has one
     return new Map<MapType, Record<string, MapStyle>>()
-      .set(MapType.GAODE, gaode.themes)
-      .set(MapType.BAIDU, baidu.themes)
-      .set(MapType.MAPBOX, mapbox.themes)
-      .set(MapType.MAPLIBRE, mapLibre.themes)
+      .set(MapType.GAODE, {
+        light: 'light',
+        dark: 'amap://styles/darkblue',
+      })
+      .set(MapType.BAIDU, {
+        light: 'c17b1c2b528429a7b04bbc8d3eb8bae9',
+        dark: '344b005fd5b4220a55241c25e7733e81',
+      })
+      .set(MapType.MAPBOX, {
+        light: 'mapbox://styles/mapbox/light-v11',
+        dark: 'mapbox://styles/mapbox/dark-v11',
+      })
+      .set(MapType.MAPLIBRE, {
+        light: `https://api.maptiler.com/maps/dataviz-dark/style.json?key=${maplibreToken}`,
+        dark: `https://api.maptiler.com/maps/dataviz-dark/style.json?key=${maplibreToken}`,
+      })
       .get(type);
   });
 
-  function useGaodeMap() {
-    return new GaodeMap(config);
-  }
-  function useBaiduMap() {
-    return new BaiduMap(config);
-  }
-  function useTencentMap() {
-    return new TencentMap(config);
-  }
-  function useMapLibre() {
-    return new MapLibre(config);
-  }
-  function useMapbox() {
-    return new Mapbox(config);
-  }
+  
 
   function setTheme(colorMode: string) {
     config.style =
@@ -81,28 +74,28 @@ export const useMap = (
 
     switch (type) {
       case MapType.GAODE: {
-        config.token = gaode.token;
-        mapInstance.value = useGaodeMap();
+        config.token = gaodeToken;
+        mapInstance.value = new GaodeMap(config);
         break;
       }
       case MapType.BAIDU: {
-        config.token = baidu.token;
-        mapInstance.value = useBaiduMap();
+        config.token = baiduToken;
+        mapInstance.value = new BaiduMap(config);
         break;
       }
       case MapType.TENCENT: {
-        config.token = tencent.token;
-        mapInstance.value = useTencentMap();
+        config.token = tencentToken;
+        mapInstance.value = new TencentMap(config);
         break;
       }
       case MapType.MAPLIBRE: {
-        config.token = mapLibre.token;
-        mapInstance.value = useMapLibre();
+        config.token = maplibreToken;
+        mapInstance.value = new MapLibre(config);
         break;
       }
       case MapType.MAPBOX: {
-        config.token = mapbox.token;
-        mapInstance.value = useMapbox();
+        config.token = mapboxToken;
+        mapInstance.value = new Mapbox(config);
         break;
       }
     }
@@ -125,10 +118,6 @@ export const useMap = (
   return {
     container,
     scene,
-    mapInstance,
-    useBaiduMap,
-    useGaodeMap,
-    useTencentMap,
-    useMapLibre,
+    mapInstance
   };
 };

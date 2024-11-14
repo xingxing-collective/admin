@@ -25,7 +25,7 @@ export default defineNuxtConfig({
         },
       ],
       htmlAttrs: {
-        lang: 'en-US',
+        lang: 'en',
       },
       link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
     },
@@ -34,6 +34,15 @@ export default defineNuxtConfig({
     build: {
       minify: 'esbuild',
       cssMinify: 'esbuild',
+    },
+  },
+  runtimeConfig: {
+    public: {
+      gaodeToken: process.env.NUXT_GAODE_MAP_TOKEN,
+      baiduToken: process.env.NUXT_BAIDU_MAP_TOKEN,
+      tencentToken: process.env.NUXT_TENCENT_MAP_TOKEN,
+      mapboxToken: process.env.NUXT_MAPBOX_MAP_TOKEN,
+      maplibreToken: process.env.NUXT_MAPLIBRE_MAP_TOKEN
     },
   },
   future: {
@@ -50,43 +59,6 @@ export default defineNuxtConfig({
     'nuxt-auth-utils',
   ],
   css: ['./assets/css/main.css', './assets/css/override.css'],
-  runtimeConfig: {
-    public: {
-      map: {
-        gaode: {
-          token: import.meta.env.GAODE_MAP_TOKEN,
-          themes: {
-            dark: 'amap://styles/darkblue',
-            light: 'light',
-          },
-        },
-        baidu: {
-          token: import.meta.env.BAIDU_MAP_TOKEN,
-          themes: {
-            dark: '344b005fd5b4220a55241c25e7733e81',
-            light: 'c17b1c2b528429a7b04bbc8d3eb8bae9',
-          },
-        },
-        tencent: {
-          token: import.meta.env.TENCENT_MAP_TOKEN,
-        },
-        mapLibre: {
-          token: import.meta.env.MAPLIBRE_MAP_TOKEN,
-          themes: {
-            dark: `https://api.maptiler.com/maps/dataviz-dark/style.json?key=${import.meta.env.MAPLIBRE_MAP_TOKEN}`,
-            light: `https://api.maptiler.com/maps/dataviz/style.json?key=${import.meta.env.MAPLIBRE_MAP_TOKEN}`,
-          },
-        },
-        mapbox: {
-          token: import.meta.env.MAPBOX_MAP_TOKEN,
-          themes: {
-            dark: 'mapbox://styles/mapbox/dark-v11',
-            light: 'mapbox://styles/mapbox/light-v11',
-          },
-        },
-      },
-    },
-  },
   i18n: {
     detectBrowserLanguage: {
       useCookie: true,
