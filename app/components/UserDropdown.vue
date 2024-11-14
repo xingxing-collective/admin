@@ -5,7 +5,7 @@ const { isSearchModalOpen } = useUIState()
 
 const items = [
     [{
-        label: (user.value as any)?.login || '',
+        label: user.value?.name || '',
         slot: 'account',
         disabled: true
     }], [{
@@ -37,7 +37,7 @@ const items = [
     }], [{
         label: 'Sign out',
         icon: 'i-heroicons-arrow-left-on-rectangle',
-        click: ()=>{
+        click: () => {
             clear()
             navigateTo('/signin')
         }
@@ -51,9 +51,9 @@ const items = [
         :popper="{ strategy: 'absolute', placement: 'top' }">
         <UButton v-bind="$ui.button?.secondary" class="w-full">
             <template #leading>
-                <UAvatar :src="`https://avatars.githubusercontent.com/u/${(user as any)?.id}?v=4`" size="2xs" />
+                <UAvatar :src="user?.avatar_url" size="2xs" />
             </template>
-            <span class="truncate">{{ (user as any)?.login }}</span>
+            <span class="truncate">{{ user?.name }}</span>
             <template #trailing>
                 <UIcon name="i-heroicons-ellipsis-vertical" class="w-5 h-5 ml-auto" />
             </template>

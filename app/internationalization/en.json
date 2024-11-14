@@ -70,5 +70,6 @@
   "Enter your password":"Enter your password",
   "Continue with Gitlab":"Continue with Gitlab",
   "Login with Passkey":"Login with Passkey",
-  "Continue with Email":"Continue with Email"
+  "Continue with Email":"Continue with Email",
+  "Other Login options":"Other Login options"
 }
