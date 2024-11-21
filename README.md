@@ -2,7 +2,7 @@
 
 A clean, elegant, beautiful and powerful admin template using [Nuxt](https://nuxt.com) 
 
-[![Deploy to Vercel](https://vercel.com/button)](https://xingxing-nuxt-admin.vercel.app)
+[![Deploy to Vercel](https://vercel.com/button)](https://xingxing-admin.vercel.app)
 
 ## 🚀 Features
 
@@ -12,7 +12,7 @@ A clean, elegant, beautiful and powerful admin template using [Nuxt](https://nux
 
 ## 🌐 Live demo
 
-https://xingxing-nuxt-admin.vercel.app
+https://xingxing-admin.vercel.app
 
 <p align="left">
 <img src="./.github/assets/signin.png" alt="Sign in" width="45%" />
