@@ -27,7 +27,7 @@ const items = [
     }, {
         label: 'Github',
         icon: 'i-simple-icons-github',
-        to: 'https://github.com/xingxingmofashu/nuxt-admin',
+        to: 'https://github.com/xingxing-collective/xingxing-admin',
         target: '_blank'
     }, {
         label: 'Framework',

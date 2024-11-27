@@ -9,7 +9,7 @@
         <ColorPicker />
         <ColorModeButton />
         <UButton
-to="https://github.com/xingxing-collective/nuxt-admin" v-bind="{ ...$ui.button?.secondary }"
+to="https://github.com/xingxing-collective/xingxing-admin" v-bind="{ ...$ui.button?.secondary }"
           target="_blank" icon="i-simple-icons-github" aria-label="GitHub" />
       </div>
     </UContainer>
@@ -50,7 +50,7 @@ const props = defineProps({
   }
 })
 
-const { ui, attrs } = useUI('nuxt-admin.header',
+const { ui, attrs } = useUI('xingxing-admin.header',
   toRef(props, 'ui'),
   config,
   toRef(props, 'class'),

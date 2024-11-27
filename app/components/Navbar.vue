@@ -73,7 +73,7 @@ const props = defineProps({
   }
 })
 
-const { ui, attrs } = useUI('nuxt-admin.header',
+const { ui, attrs } = useUI('xingxing-admin.navbar',
   toRef(props, 'ui'),
   config,
   toRef(props, 'class'),

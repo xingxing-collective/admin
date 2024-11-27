@@ -9,7 +9,7 @@
                     <LanguageSwitch />
                     <ColorPicker />
                     <ColorModeButton />
-                    <UButton to="https://github.com/xingxing-collective/nuxt-admin"
+                    <UButton to="https://github.com/xingxing-collective/xingxing-admin"
                         v-bind="{ ...$ui.button?.secondary }" target="_blank" icon="i-simple-icons-github"
                         aria-label="GitHub" />
                 </div>
