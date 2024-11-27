@@ -1,4 +1,5 @@
 <script setup lang="ts">
+
 import { VisXYContainer, VisGroupedBar, VisAxis, VisBulletLegend } from '@unovis/vue'
 type ElectionDatum = {
     year: number;
@@ -9,10 +10,10 @@ type ElectionDatum = {
 }
 
 const colors = {
-    republican: '#f45a6d',
-    democrat: '#2780eb',
-    other: '#ffc180',
-    libertarian: '#34daa6',
+    republican: "#22c55e",
+    democrat: "#f97316",
+    other: "#f43f5e",
+    libertarian: "#0ea5e9",
 }
 
 const capitalize = (s: string): string => {
@@ -104,6 +105,7 @@ const items = Object.entries(colors).map(([n, c]) => ({
     name: capitalize(n),
     color: c,
 }))
+
 const x = (d: ElectionDatum) => d.year
 const y = [
     (d: ElectionDatum) => d.republican,

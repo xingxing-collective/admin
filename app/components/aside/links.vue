@@ -166,7 +166,7 @@ const config = computed(() => ({
 }));
 
 const { ui, attrs } = useUI(
-  'nuxt-admin.aside.links',
+  'xingxing-admin.aside.links',
   toRef(props, 'ui'),
   config,
   toRef(props, 'class'),

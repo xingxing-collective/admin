@@ -86,7 +86,7 @@ export default defineNuxtConfig({
     fallback: 'light',
   },
   site: {
-    url: 'https://xingxing-nuxt-admin.vercel.app',
+    url: 'https://xingxing-admin.vercel.app',
     name: 'Nuxt Admin',
     description: 'System built with Nuxt',
     defaultLocale: 'en',

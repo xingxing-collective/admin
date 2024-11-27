@@ -1,5 +1,5 @@
 {
-  "name": "nuxt-admin",
+  "name": "xingxing-admin",
   "version": "0.1.0",
   "description": "A clean, elegant, beautiful and powerful admin template, based on Nuxt, TypeScript, Pinia,  and tailwindcss.",
   "type": "module",
@@ -55,6 +55,7 @@
     "husky": "^9.1.6",
     "nuxt": "^3.13.2",
     "nuxt-auth-utils": "^0.5.3",
+    "vue-tsc": "^2.1.10",
     "zod": "^3.23.8"
   },
   "license": "MIT"

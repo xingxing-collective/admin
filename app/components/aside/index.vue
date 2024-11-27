@@ -26,7 +26,7 @@ const props = defineProps({
 });
 
 const { ui, attrs } = useUI(
-  'nuxt-admin.aside',
+  'xingxing-admin.aside',
   toRef(props, 'ui'),
   config,
   toRef(props, 'class'),
