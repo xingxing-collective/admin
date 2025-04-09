@@ -12,7 +12,7 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      title: 'Nuxt Admin',
+      title: 'XingXing Admin',
       titleTemplate: '%s',
       meta: [
 
