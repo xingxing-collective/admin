@@ -3,9 +3,7 @@ import withNuxt from './.nuxt/eslint.config.mjs'
 
 export default withNuxt({
   rules: {
-    '@typescript-eslint/no-explicit-any': 'off',
-    "vue/multi-word-component-names":'off',
-    "@typescript-eslint/ban-ts-comment":'off',
-    'vue/first-attribute-linebreak':'off'
+    'vue/no-multiple-template-root': 'off',
+    'vue/max-attributes-per-line': ['error', { singleline: 3 }]
   }
 })
