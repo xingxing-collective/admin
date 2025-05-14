@@ -6,18 +6,6 @@ export default defineNuxtConfig({
   future: {
     compatibilityVersion: 4
   },
-  components:{
-    dirs: [
-      '~/components',
-      {
-        path: '~/components/ui',
-        global: false,
-        extensions: ['vue'],
-        prefix: 'Ui',
-        pathPrefix: false,
-      }
-    ]
-  },
   css: ['~/assets/css/main.css'],
   vite: {
     plugins: [tailwindcss()]
@@ -25,9 +13,15 @@ export default defineNuxtConfig({
   shadcn:{
     componentDir: './app/components/ui'
   },
+  colorMode: {
+    classSuffix: '',
+    preference: 'system',
+    fallback: 'light'
+  },
   modules: [
     '@nuxt/eslint',
     '@vueuse/nuxt',
+    '@nuxtjs/color-mode',
     'shadcn-nuxt'
   ]
 })
