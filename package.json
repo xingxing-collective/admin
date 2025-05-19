@@ -13,6 +13,7 @@
     "prepare:husky": "husky"
   },
   "dependencies": {
+    "@nuxtjs/i18n": "9.5.4",
     "@tailwindcss/vite": "^4.1.6",
     "@vueuse/core": "^13.1.0",
     "class-variance-authority": "^0.7.1",
