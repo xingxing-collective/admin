@@ -10,8 +10,16 @@ export default defineNuxtConfig({
   vite: {
     plugins: [tailwindcss()]
   },
-  shadcn:{
+  shadcn: {
     componentDir: './app/components/ui'
+  },
+  i18n: {
+    defaultLocale: 'en',
+    langDir:'../app/internationalization',
+    locales: [
+      { code: 'en', name: 'English', file: 'en.json' },
+      { code: 'zh-CN', name: '简体中文', file: 'zh-CN.json' }
+    ]
   },
   colorMode: {
     classSuffix: '',
@@ -22,6 +30,9 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@vueuse/nuxt',
     '@nuxtjs/color-mode',
-    'shadcn-nuxt'
+    'shadcn-nuxt',
+    '@nuxtjs/i18n',
+    '@nuxt/icon',
+    '@nuxt/image'
   ]
 })
